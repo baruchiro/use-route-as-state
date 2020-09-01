@@ -1,23 +1,36 @@
-import * as React from 'react';
+import { generatePath, useHistory, useLocation, useRouteMatch } from 'react-router-dom'
 
-export const useMyHook = () => {
-  let [{
-    counter
-  }, setState] = React.useState<{
-    counter: number;
-  }>({
-    counter: 0
-  });
+const getQueryParamsAsObject = (search: string) => {
+    let params = {}
 
-  React.useEffect(() => {
-    let interval = window.setInterval(() => {
-      counter++;
-      setState({counter})
-    }, 1000)
-    return () => {
-      window.clearInterval(interval);
-    };
-  }, []);
+    new URLSearchParams(search).forEach((value, key) => params[key] = value)
 
-  return counter;
-};
+    return params
+}
+
+const objectToQueryParams = (obj: Record<string, string>) => '?' + Object.keys(obj).map((key) => `${key}=${obj[key]}`).join('&')
+
+export const useQueryAsState = () => {
+    const { pathname, search } = useLocation()
+    const history = useHistory()
+
+    const params = getQueryParamsAsObject(search)
+
+    const updateQuery = (updatedParams: Record<string, string>) => {
+        Object.assign(params, updatedParams)
+        history.replace(pathname + objectToQueryParams(params))
+    }
+
+    return [params, updateQuery]
+}
+
+export const useParamsAsState = () => {
+    const { path, params } = useRouteMatch()
+    const history = useHistory()
+
+    const updateParams = (updatedParams: Record<string, string>) => {
+        Object.assign(params, updatedParams)
+        history.push(generatePath(path, params))
+    }
+    return [params, updateParams]
+}
