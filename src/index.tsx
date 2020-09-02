@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { generatePath, useHistory, useLocation, useRouteMatch } from 'react-router-dom'
 
 const getQueryParamsAsObject = (search: string) => {
@@ -8,13 +9,17 @@ const getQueryParamsAsObject = (search: string) => {
     return params
 }
 
-const objectToQueryParams = (obj: Record<string, string>) => '?' + Object.keys(obj).map((key) => `${key}=${obj[key]}`).join('&')
+const objectToQueryParams = (obj: Record<string, string>) => '?' + Object.keys(obj)
+    .filter((key) => obj[key] !== undefined)
+    .map((key) => `${key}=${obj[key]}`)
+    .join('&')
 
 export const useQueryAsState = () => {
     const { pathname, search } = useLocation()
     const history = useHistory()
+    const [params, setParams] = useState({})
 
-    const params = getQueryParamsAsObject(search)
+    useEffect(() => setParams(getQueryParamsAsObject(search)), [search])
 
     const updateQuery = (updatedParams: Record<string, string>) => {
         Object.assign(params, updatedParams)
