@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 
-import { useMyHook } from 'use-route-as-state'
+import { useQueryAsState, useParamsAsState } from 'use-route-as-state'
+
+const RoutedComp = () => {
+
+  const [{ user }, updateParams] = useParamsAsState()
+  const [{ detailes }, updateQuery] = useQueryAsState()
+
+  const [localUser, setLocalUser] = useState(user)
+  const [localDetails, setLocalDetails] = useState(detailes)
+
+  return <div>
+    Set any user string and press OK: <input value={user} onChange={(event) => setLocalUser(event.target.value)} />
+    <button onClick={() => updateParams({ user: localUser })} >OK</button>
+  </div>
+}
 
 const App = () => {
-  const example = useMyHook()
+
   return (
-    <div>
-      {example}
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path={`/:user?`}>
+          <RoutedComp />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   )
 }
 export default App
