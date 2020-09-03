@@ -14,7 +14,7 @@ const objectToQueryParams = (obj: Record<string, string>) => '?' + Object.keys(o
     .map((key) => `${key}=${obj[key]}`)
     .join('&')
 
-export const useQueryAsState = () => {
+export const useQueryAsState = (): [Record<string, string>, (updatedParams: Record<string, string>) => void] => {
     const { pathname, search } = useLocation()
     const history = useHistory()
     const [params, setParams] = useState({})
@@ -29,7 +29,7 @@ export const useQueryAsState = () => {
     return [params, updateQuery]
 }
 
-export const useParamsAsState = () => {
+export const useParamsAsState = (): [Record<string, string>, (updatedParams: Record<string, string>) => void] => {
     const { path, params } = useRouteMatch()
     const history = useHistory()
 
