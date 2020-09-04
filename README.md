@@ -4,6 +4,8 @@
 
 [![npm](https://img.shields.io/npm/v/use-route-as-state?logo=npm&label=version)](https://www.npmjs.com/package/use-route-as-state)
 [![npm](https://img.shields.io/npm/dw/use-route-as-state?label=npm)](https://www.npmjs.com/package/use-route-as-state)
+![Release](https://github.com/baruchiro/use-route-as-state/workflows/Release/badge.svg)
+![Github Pages](https://github.com/baruchiro/use-route-as-state/workflows/Github%20Pages/badge.svg)
 
 ## Install
 
