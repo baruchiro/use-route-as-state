@@ -1,8 +1,9 @@
 # use-route-as-state
 
-> Use React Router route and query string as component state
+> Use React Router **route** and **query string** as component **state**
 
-[![NPM](https://img.shields.io/npm/v/use-route-as-state.svg)](https://www.npmjs.com/package/use-route-as-state) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm](https://img.shields.io/npm/v/use-route-as-state?logo=npm&label=version)](https://www.npmjs.com/package/use-route-as-state)
+[![npm](https://img.shields.io/npm/dw/use-route-as-state?label=npm)](https://www.npmjs.com/package/use-route-as-state)
 
 ## Install
 
@@ -12,10 +13,12 @@ npm install --save use-route-as-state
 
 ## Usage
 
+You can see a live demo, including code, [here](https://baruchiro.github.io/example).
+
 ```tsx
 import * as React from 'react'
 
-import { useMyHook } from 'use-route-as-state'
+import { useParamsAsState, useQueryAsState } from 'use-route-as-state'
 
 const Example = () => {
   const example = useMyHook()

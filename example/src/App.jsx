@@ -9,23 +9,16 @@ import UseQueryParam from './UseQueryParam'
 import UseRouteParam from './UseRouteParam'
 
 const Example = ({ title, description, code, children }) => {
-  return <Card style={{margin: 5}}>
+  return <Card style={{ margin: 5 }}>
     <CardContent>
       <Typography variant='h4'>{title}</Typography>
       <Typography variant='subtitle1'>{description}</Typography>
       {children}
-      <div>Also use links</div>
     </CardContent>
     <CardMedia>
       <SyntaxHighlighter language="javascript">{code}</SyntaxHighlighter>
     </CardMedia>
   </Card>
-  // return <Box display='flex' flexDirection='column'>
-  //   <Typography variant='h4'>{title}</Typography>
-  //   <Typography variant='subtitle1'>{description}</Typography>
-  //   {children}
-  //   <SyntaxHighlighter language="javascript">{code}</SyntaxHighlighter>
-  // </Box>
 }
 
 const Examples = () => {
@@ -40,6 +33,10 @@ const Examples = () => {
       description='You will see how the state changes simultaneously in both the label below and the address bar'
       code={UseRouteParamCode}>
       <UseRouteParam />
+    </Example>
+    <Example title='Links'
+      description='Create URL here to see how it affect other components'>
+      TODO
     </Example>
   </Box>
 }

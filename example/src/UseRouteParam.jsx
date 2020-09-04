@@ -6,7 +6,6 @@ import { useParamsAsState } from 'use-route-as-state'
 
 const UseRouteParam = () => {
     const [params, updateParams] = useParamsAsState()
-    const { pathname } = useLocation()
 
     const onChange = (e) => updateParams({ [e.target.id]: e.target.value || undefined })
 
