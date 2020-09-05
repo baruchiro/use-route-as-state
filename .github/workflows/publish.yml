@@ -6,7 +6,54 @@ on:
     paths: 'package.json'
 
 jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set version in Env
+        shell: bash
+        run: |
+          version=`awk -F ':' '/version/ {print $2}' package.json | sed 's/\"//g' | sed 's/,//g' | sed 's/ //g'`
+          echo ::set-env name=package_version::$version
+          echo "Version is $version"
+      - uses: actions/github-script@v2.0.1
+        name: Check if current version is a published release (by release tag)
+        id: check_release
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          # debug: true
+          script: |
+            const releases = await github.repos.listReleases({
+              owner: '${{github.repository_owner}}',
+              repo: 'use-route-as-state'
+            })
+            const published_release_tags = releases.data.filter(release => !release.draft).map(release => release.tag_name)
+            const newRelease = !published_release_tags.includes('v${{ env.package_version }}')
+            console.log('newRelease: ' + newRelease)
+            return newRelease
+    outputs:
+      isRelease: ${{steps.check_release.outputs.result}}
+      packageVersion: ${{ env.package_version }}
+  
+  release:
+    needs: [version]
+    if: ${{ needs.version.outputs.isRelease == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: v${{ needs.version.outputs.packageVersion }}
+        release_name: Release ${{ needs.version.outputs.packageVersion }}
+        draft: false
+        prerelease: false
+  
   publish-gpr:
+    needs: [release]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
