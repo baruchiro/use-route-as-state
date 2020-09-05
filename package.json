@@ -22,8 +22,7 @@
     "build": "rollup -c && tsc -d --emitDeclarationOnly --noEmit false --declarationDir dist",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build",
+    "build:pages": "cd example && yarn install && yarn run build",
     "gpr-setup": "node .github/scripts/gpr.js"
   },
   "peerDependencies": {
@@ -43,7 +42,6 @@
     "@types/react": "^16.9.49",
     "@types/react-router-dom": "^5.1.5",
     "cross-env": "^7.0.2",
-    "gh-pages": "^3.1.0",
     "react": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
