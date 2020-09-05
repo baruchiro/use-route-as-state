@@ -10,11 +10,12 @@ import CreateLinkWithState from './CreateLinkWithState'
 import UseQueryParam from './UseQueryParam'
 import UseRouteParam from './UseRouteParam'
 
-const Example = ({ title, description, code, children }) => {
+const Example = ({ title, caption, description, code, children }) => {
   return <Card style={{ margin: 5 }}>
     <CardContent>
       <Typography variant='h4'>{title}</Typography>
       <Typography variant='subtitle1'>{description}</Typography>
+      {caption && <Typography color='error' variant='caption'>{caption}</Typography>}
       {children}
     </CardContent>
     <CardMedia>
@@ -33,6 +34,8 @@ const Examples = () => {
     </Example>
     <Example title='Use Route Params'
       description='You will see how the state changes simultaneously in both the label below and the address bar'
+      caption={<>This is just for example. I don't recommend using a TextField for updating Route Params.<br />
+        You may want to use DropDown or something.</>}
       code={UseRouteParamCode}>
       <UseRouteParam />
     </Example>
