@@ -19,6 +19,6 @@ export default () => {
     const { path } = useRouteMatch()
 
     return <Switch>
-        <Route path={`${path}/:bar?`} component={UseRouteParam} />
+        <Route path={`${path}:bar?`} component={UseRouteParam} />
     </Switch>
 }

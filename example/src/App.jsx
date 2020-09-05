@@ -3,7 +3,7 @@ import UseQueryParamCode from '!!raw-loader!./UseQueryParam'
 import UseRouteParamCode from '!!raw-loader!./UseRouteParam'
 import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core'
 import React from 'react'
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import UseQueryParam from './UseQueryParam'
 import UseRouteParam from './UseRouteParam'
@@ -16,7 +16,7 @@ const Example = ({ title, description, code, children }) => {
       {children}
     </CardContent>
     <CardMedia>
-      <SyntaxHighlighter language="javascript">{code}</SyntaxHighlighter>
+      {code && <SyntaxHighlighter language="javascript">{code}</SyntaxHighlighter>}
     </CardMedia>
   </Card>
 }
@@ -35,19 +35,17 @@ const Examples = () => {
       <UseRouteParam />
     </Example>
     <Example title='Links'
-      description='Create URL here to see how it affect other components'>
-      TODO
-    </Example>
+      description='Create URL here to see how it affect other components'
+      code='TODO' />
   </Box>
 }
 
 const App = () => {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/use-route-as-state/'>
       <Switch>
-        <Route path='/example' component={Examples} />
-        <Route path='/' render={() => <Link to={'/example'}>Show Example</Link>} />
+        <Route path='/' component={Examples} />
       </Switch>
     </BrowserRouter>
   )
