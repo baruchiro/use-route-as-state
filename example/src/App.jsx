@@ -1,10 +1,12 @@
 /* eslint-disable import/no-webpack-loader-syntax */
+import CreateLinkWithStateCode from '!!raw-loader!./CreateLinkWithState'
 import UseQueryParamCode from '!!raw-loader!./UseQueryParam'
 import UseRouteParamCode from '!!raw-loader!./UseRouteParam'
 import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core'
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SyntaxHighlighter from 'react-syntax-highlighter'
+import CreateLinkWithState from './CreateLinkWithState'
 import UseQueryParam from './UseQueryParam'
 import UseRouteParam from './UseRouteParam'
 
@@ -34,9 +36,11 @@ const Examples = () => {
       code={UseRouteParamCode}>
       <UseRouteParam />
     </Example>
-    <Example title='Links'
+    <Example title='Try Links'
       description='Create URL here to see how it affect other components'
-      code='TODO' />
+      code={CreateLinkWithStateCode}>
+      <CreateLinkWithState />
+    </Example>
   </Box>
 }
 

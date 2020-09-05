@@ -10,8 +10,9 @@ const UseRouteParam = () => {
     const onChange = (e) => updateParams({ [e.target.id]: e.target.value || undefined })
 
     return <Box display='flex' flexDirection='column'>
-        <TextField id='bar' value={params.bar} label={`Insert value for 'bar'`} onChange={onChange} />
-        <Typography variant='body2'>{params.bar}</Typography>
+        <TextField id='rParam' label={`Insert value for 'rParam'`}
+            value={params.rParam} onChange={onChange} />
+        <Typography variant='body2'>{params.rParam}</Typography>
     </Box>
 }
 
@@ -19,6 +20,6 @@ export default () => {
     const { path } = useRouteMatch()
 
     return <Switch>
-        <Route path={`${path}:bar?`} component={UseRouteParam} />
+        <Route path={`${path}:rParam?`} component={UseRouteParam} />
     </Switch>
 }

@@ -8,8 +8,9 @@ const UseQueryParam = () => {
     const onChange = (e) => updateParams({ [e.target.id]: e.target.value })
 
     return <Box display='flex' flexDirection='column'>
-        <TextField id='foo' value={params.foo} label={`Insert value for 'foo'`} onChange={onChange} />
-        <Typography variant='body2'>{params.foo}</Typography>
+        <TextField id='qParam' label={`Insert value for 'qParam'`}
+            value={params.qParam} onChange={onChange} />
+        <Typography variant='body2'>{params.qParam}</Typography>
     </Box>
 }
 
