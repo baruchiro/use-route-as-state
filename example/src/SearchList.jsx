@@ -8,6 +8,6 @@ export default ({ search }) => {
     const s = search || ''
 
     return <ul>
-        {subOptions(s).map((n) => <li>{n}</li>)}
+        {subOptions(s).map((n) => <li key={n}>{n}</li>)}
     </ul>
 }
