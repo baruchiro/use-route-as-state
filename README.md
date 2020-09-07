@@ -44,13 +44,17 @@ const Example = () => {
 
 ### `useParamsAsState`
 
-Type: `useParamsAsState: () => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
+> **Type:** `useParamsAsState: () => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
+
+Use to sync the [URL Parameters](https://reactrouter.com/web/example/url-params) with you component.
 
 This custom hook returns an array with two elements:
 
 - The **first element** is a *string to string* object, when the `key` is the *route param* name, and the `value` is the value of this param.
 
 - The **second element** is a *function* to update the *route* with updated `value`s for specific `key`s. If one of the `key`s (the *Route Params*) is not in the *update object*, it will remain unchanged.
+
+> Updating the `route` will [**`push`**](https://reactrouter.com/web/api/history) the updated route to the `history`.
 
 The *params object* will be reactive to the *route*. It means the any time the *route* changed, the *params object* (the **first element** from `useParamsAsState`) will change according to the *route* and will render the component.
 
@@ -62,9 +66,13 @@ To use `Route Params`, you have to declare the params with the [React Router API
 
 ### `useQueryAsState`
 
-Type: `useQueryAsState: () => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
+> **Type:** `useQueryAsState: () => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
+
+Use to sync the [Query Parameters](https://reactrouter.com/web/example/query-parameters) with you component.
 
 This hook works just like `useParamsAsState`, except you don't need to declare any special *route* in the React Router. You can use this hook in any component, down in the tree, as long as there is a *Router* somewhere up in the tree.
+
+> Updating the `route` will [**`replace`**](https://reactrouter.com/web/api/history) the updated route to the `history`.
 
 ## Development
 
