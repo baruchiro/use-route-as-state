@@ -15,7 +15,7 @@ npm install --save use-route-as-state
 
 ## Usage
 
-You can see a live demo, including code, [here](https://baruchiro.github.io/example).
+You can see a live demo, including code, [here](https://baruchiro.github.io/use-route-as-state/).
 
 ```tsx
 // URL: /:param?query=
