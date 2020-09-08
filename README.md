@@ -46,7 +46,7 @@ const Example = () => {
 
 > **Type:** `useParamsAsState: () => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
 
-Use to sync the [URL Parameters](https://reactrouter.com/web/example/url-params) with you component.
+**Use to sync the [URL Parameters](https://reactrouter.com/web/example/url-params) with you component.**
 
 This custom hook returns an array with two elements:
 
@@ -68,7 +68,7 @@ To use `Route Params`, you have to declare the params with the [React Router API
 
 > **Type:** `useQueryAsState: () => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
 
-Use to sync the [Query Parameters](https://reactrouter.com/web/example/query-parameters) with you component.
+**Use to sync the [Query Parameters](https://reactrouter.com/web/example/query-parameters) with you component.**
 
 This hook works just like `useParamsAsState`, except you don't need to declare any special *route* in the React Router. You can use this hook in any component, down in the tree, as long as there is a *Router* somewhere up in the tree.
 
