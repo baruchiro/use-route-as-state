@@ -3,6 +3,8 @@ name: Github Pages
 on:
   push:
     branches: master
+    paths-ignore:
+    - 'Flow.drawio'
 
 jobs:
   gh-pages:
