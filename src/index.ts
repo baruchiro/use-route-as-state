@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 import { generatePath, useHistory, useLocation, useRouteMatch } from 'react-router-dom'
 
 const getQueryParamsAsObject = (search: string) => {
-    let params = {}
+    let params: Record<string, string> = {}
 
     new URLSearchParams(search).forEach((value, key) => params[key] = value)
 
@@ -14,32 +14,30 @@ const objectToQueryParams = (obj: Record<string, string>) => '?' + Object.keys(o
     .map((key) => `${key}=${obj[key]}`)
     .join('&')
 
-export const useQueryAsState = (initialState?: Record<string, string>): [Record<string, string>, (updatedParams: Record<string, string>) => void] => {
+export const useQueryAsState = (defaultValues?: Record<string, string>): [Record<string, string>, (updatedParams: Record<string, string>) => void] => {
     const { pathname, search } = useLocation()
     const history = useHistory()
-    const [params, setParams] = useState(initialState || {})
 
-    useEffect(() => setParams(getQueryParamsAsObject(search)), [search])
+    const queryData = useMemo(() => getQueryParamsAsObject(search), [search])
 
     const updateQuery = useCallback((updatedParams: Record<string, string>) => {
-        Object.assign(params, updatedParams)
-        history.replace(pathname + objectToQueryParams(params))
-    }, [params, pathname])
+        history.replace(pathname + objectToQueryParams({ ...queryData, ...updatedParams }))
+    }, [queryData, pathname])
 
-    return [params, updateQuery]
+    const queryWithDefault = useMemo(() => ({ ...defaultValues, ...queryData }), [queryData])
+
+    return [queryWithDefault, updateQuery]
 }
 
-export const useParamsAsState = (initialState?: Record<string, string>): [Record<string, string>, (updatedParams: Record<string, string>) => void] => {
+export const useParamsAsState = (defaultValues?: Record<string, string>): [Record<string, string>, (updatedParams: Record<string, string>) => void] => {
     const { path, params } = useRouteMatch()
     const history = useHistory()
-    const [urlParams, setUrlParams] = useState(initialState || {})
-
-    useEffect(() => setUrlParams((uParams) => ({ ...uParams, ...params })), [params])
 
     const updateParams = useCallback((updatedParams: Record<string, string>) => {
-        Object.assign(urlParams, updatedParams)
-        history.push(generatePath(path, urlParams))
-    }, [path, urlParams])
+        history.push(generatePath(path, { ...params, ...updatedParams }))
+    }, [path, params])
 
-    return [urlParams, updateParams]
+    const paramsWithDefault = useMemo(() => ({ ...defaultValues, ...params }), [params])
+
+    return [paramsWithDefault, updateParams]
 }
