@@ -12,7 +12,11 @@
   "files": [
     "dist"
   ],
-  "keywords": ["react", "react-hooks", "react-router"],
+  "keywords": [
+    "react",
+    "react-hooks",
+    "react-router"
+  ],
   "engines": {
     "node": ">=8",
     "npm": ">=5"
