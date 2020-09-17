@@ -1,6 +1,10 @@
 import { useCallback, useMemo } from 'react'
 import { generatePath, useHistory, useLocation, useRouteMatch } from 'react-router-dom'
 
+const removeUndefined = (obj: object) => Object.keys(obj)
+    .filter((key) => obj[key] !== undefined)
+    .reduce((acc, key) => ({ ...acc, [key]: obj[key] }), {})
+
 const getQueryParamsAsObject = (search: string) => {
     let params: Record<string, string> = {}
 
@@ -24,7 +28,7 @@ export const useQueryAsState = (defaultValues?: Record<string, string>): [Record
         history.replace(pathname + objectToQueryParams({ ...queryData, ...updatedParams }))
     }, [queryData, pathname])
 
-    const queryWithDefault = useMemo(() => ({ ...defaultValues, ...queryData }), [queryData])
+    const queryWithDefault = useMemo(() => ({ ...defaultValues, ...removeUndefined(queryData) }), [queryData])
 
     return [queryWithDefault, updateQuery]
 }
@@ -37,7 +41,7 @@ export const useParamsAsState = (defaultValues?: Record<string, string>): [Recor
         history.push(generatePath(path, { ...params, ...updatedParams }))
     }, [path, params])
 
-    const paramsWithDefault = useMemo(() => ({ ...defaultValues, ...params }), [params])
+    const paramsWithDefault = useMemo(() => ({ ...defaultValues, ...removeUndefined(params) }), [params])
 
     return [paramsWithDefault, updateParams]
 }
