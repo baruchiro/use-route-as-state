@@ -9,6 +9,8 @@ on:
 jobs:
   gh-pages:
     runs-on: ubuntu-latest
+    env:
+      SKIP_PREFLIGHT_CHECK: true
     steps:
       - uses: actions/checkout@v2
       - run: yarn
