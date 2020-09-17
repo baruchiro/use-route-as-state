@@ -1,12 +1,22 @@
 name: Release
 
 on:
+  pull_request:
   push:
     branches: master
-    paths: 'package.json'
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn
+      - run: yarn lint
+      - run: yarn test
+  
   version:
+    needs: [test]
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
