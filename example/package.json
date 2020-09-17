@@ -26,7 +26,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "6.6.0",
     "raw-loader": "^4.0.1"
   }
 }
