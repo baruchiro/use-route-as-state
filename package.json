@@ -54,8 +54,6 @@
     "eslint": "^7.9.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-plugin-react-hooks": "^4.1.2",
-    "react": "^16.13.1",
-    "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "react-test-renderer": "^16.13.1",
     "rollup": "^2.26.9",
