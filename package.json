@@ -1,6 +1,6 @@
 {
   "name": "use-route-as-state",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Use React Router route and query string as component state",
   "author": "baruchiro",
   "license": "MIT",
@@ -33,8 +33,8 @@
     "gpr-setup": "node .github/scripts/gpr.js"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-router-dom": "^5.2.0"
+    "react": "^16.0.0",
+    "react-router-dom": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

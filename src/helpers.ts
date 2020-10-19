@@ -6,12 +6,12 @@ export const getQueryParamsAsObject = (search: string) => {
     return params
 }
 
-export const removeUndefined = (obj: Record<string, string>) => Object.keys(obj)
+export const removeUndefined = <T extends Record<string, string>>(obj: T) => Object.keys(obj)
     .filter((key) => obj[key] !== undefined)
     .reduce((acc, key) => ({
         ...acc,
         [key]: obj[key]
-    }), {} as Record<string, string>)
+    }), {} as Partial<T>)
 
 export const objectToQueryParams = (obj: Record<string, string>) => '?' + Object.keys(obj)
     .filter((key) => obj[key] !== undefined)

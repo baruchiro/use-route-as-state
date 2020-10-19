@@ -10,22 +10,22 @@ export const useDecodedLocation = () => {
     return { search: decodedSearch, ...rest }
 }
 
-export const useDecodedRouteMatch = () => {
+export const useDecodedRouteMatch = <T extends Record<string, string>>() => {
     const { params, ...rest } = useRouteMatch()
 
-    const decodedParams = useMemo(() => decodeValues(params), [params])
+    const decodedParams = useMemo(() => decodeValues(params as T), [params])
 
     return { params: decodedParams, ...rest }
 }
 
-export const decodeValues = (obj: Record<string, string>) => Object.keys(obj)
+export const decodeValues = <T extends Record<string, string>>(obj: T) => Object.keys(obj)
     .reduce((acc, key) => ({
         ...acc,
         [key]: obj[key] && decodeURIComponent(obj[key])
-    }), {} as Record<string, string>)
+    }), {} as T)
 
-export const encodeValues = (obj: Record<string, string>) => Object.keys(obj)
+export const encodeValues = <T extends Record<string, string>>(obj: T) => Object.keys(obj)
     .reduce((acc, key) => ({
         ...acc,
         [key]: obj[key] && encodeURIComponent(obj[key])
-    }), {} as Record<string, string>)
+    }), {} as T)
