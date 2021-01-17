@@ -24,7 +24,7 @@ jobs:
         shell: bash
         run: |
           version=`awk -F ':' '/version/ {print $2}' package.json | sed 's/\"//g' | sed 's/,//g' | sed 's/ //g'`
-          echo ::set-env name=package_version::$version
+          echo "package_version=$version" >> $GITHUB_ENV
           echo "Version is $version"
       - uses: actions/github-script@v2.0.1
         name: Check if current version is a published release (by release tag)
