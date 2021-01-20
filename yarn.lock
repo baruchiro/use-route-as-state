@@ -1411,16 +1411,16 @@
     "@rollup/pluginutils" "^3.0.1"
     resolve "^1.14.1"
 
-"@rollup/plugin-url@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-url/-/plugin-url-5.0.1.tgz#77fc9f56100cd83cfb45109adf7d48af1c8ecdbf"
-  integrity sha512-/dO8Ic+vR9VtMkHjmFBWzISjX0iDwrB3vLg8sy4A7hxu2Uk0J09kAXbtku7gJb1fqVcJUIByFG5d/4sgNh1DvA==
+"@rollup/plugin-url@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-url/-/plugin-url-6.0.0.tgz#20fbc8cda9bc5f0c31d7225f633002ce73e920b0"
+  integrity sha512-UHGyoo3EbLufCZtXon/baNf75PAYT+Gs/NUgFMx2ZaDQ314PKNP0pJTrpbhDqFkZADzpkqJWyQOfJ2Nd6Qk4TA==
   dependencies:
-    "@rollup/pluginutils" "^3.0.4"
-    make-dir "^3.0.0"
-    mime "^2.4.4"
+    "@rollup/pluginutils" "^3.1.0"
+    make-dir "^3.1.0"
+    mime "^2.4.6"
 
-"@rollup/pluginutils@^3.0.1", "@rollup/pluginutils@^3.0.4", "@rollup/pluginutils@^3.1.0":
+"@rollup/pluginutils@^3.0.1", "@rollup/pluginutils@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-3.1.0.tgz#706b4524ee6dc8b103b3c995533e5ad680c02b9b"
   integrity sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==
@@ -7079,7 +7079,7 @@ make-dir@^2.0.0, make-dir@^2.1.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
-make-dir@^3.0.0, make-dir@^3.0.2:
+make-dir@^3.0.2, make-dir@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
   integrity sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==
@@ -7236,7 +7236,7 @@ mime@1.6.0:
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
 
-mime@^2.4.4:
+mime@^2.4.4, mime@^2.4.6:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/mime/-/mime-2.5.0.tgz#2b4af934401779806ee98026bb42e8c1ae1876b1"
   integrity sha512-ft3WayFSFUVBuJj7BMLKAQcSlItKtfjsKDDsii3rqFDAZ7t11zRe8ASw/GlmivGwVUYtwkQrxiGGpL6gFvB0ag==
