@@ -11,3 +11,4 @@ updates:
       interval: "daily"
     assignees:
       - "baruchiro"
+    open-pull-requests-limit: 15
