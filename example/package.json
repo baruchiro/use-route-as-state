@@ -13,6 +13,10 @@
     "react-syntax-highlighter": "^13.5.3",
     "use-route-as-state": "link:.."
   },
+  "resolutions": {
+    "immer": "^8.0.1",
+    "node-notifier": "^8.0.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
