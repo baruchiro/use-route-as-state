@@ -1,6 +1,6 @@
 {
   "name": "use-route-as-state",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Use React Router route and query string as component state",
   "author": "baruchiro",
   "license": "MIT",
@@ -62,5 +62,8 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "tslib": "^2.0.1",
     "typescript": "^4.0.2"
+  },
+  "resolutions": {
+    "immer": "^8.0.1"
   }
 }
