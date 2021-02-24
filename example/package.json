@@ -9,7 +9,7 @@
     "react": "link:../node_modules/react",
     "react-dom": "^16.13.1",
     "react-router-dom": "link:../node_modules/react-router-dom",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^4.0.1",
     "react-syntax-highlighter": "^13.5.3",
     "use-route-as-state": "link:.."
   },

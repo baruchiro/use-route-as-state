@@ -1,4 +1,3 @@
-/* eslint-disable import/no-webpack-loader-syntax */
 import CreateLinkWithStateCode from '!!raw-loader!./CreateLinkWithState'
 import UseQueryParamCode from '!!raw-loader!./UseQueryParam'
 import UseRouteParamCode from '!!raw-loader!./UseRouteParam'
