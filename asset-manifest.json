@@ -1,23 +1,21 @@
 {
   "files": {
-    "main.css": "/use-route-as-state/static/css/main.2c6a48fe.chunk.css",
-    "main.js": "/use-route-as-state/static/js/main.83c24b81.chunk.js",
-    "main.js.map": "/use-route-as-state/static/js/main.83c24b81.chunk.js.map",
-    "runtime-main.js": "/use-route-as-state/static/js/runtime-main.82207e67.js",
-    "runtime-main.js.map": "/use-route-as-state/static/js/runtime-main.82207e67.js.map",
-    "static/js/2.d98f6ed7.chunk.js": "/use-route-as-state/static/js/2.d98f6ed7.chunk.js",
-    "static/js/2.d98f6ed7.chunk.js.map": "/use-route-as-state/static/js/2.d98f6ed7.chunk.js.map",
+    "main.css": "/use-route-as-state/static/css/main.3bd613a0.chunk.css",
+    "main.js": "/use-route-as-state/static/js/main.94439b6d.chunk.js",
+    "main.js.map": "/use-route-as-state/static/js/main.94439b6d.chunk.js.map",
+    "runtime-main.js": "/use-route-as-state/static/js/runtime-main.3802927c.js",
+    "runtime-main.js.map": "/use-route-as-state/static/js/runtime-main.3802927c.js.map",
+    "static/js/2.2d13d500.chunk.js": "/use-route-as-state/static/js/2.2d13d500.chunk.js",
+    "static/js/2.2d13d500.chunk.js.map": "/use-route-as-state/static/js/2.2d13d500.chunk.js.map",
     "index.html": "/use-route-as-state/index.html",
-    "precache-manifest.39dfc687f5c81bfbbd7a8ae0581a7b71.js": "/use-route-as-state/precache-manifest.39dfc687f5c81bfbbd7a8ae0581a7b71.js",
-    "service-worker.js": "/use-route-as-state/service-worker.js",
-    "static/css/main.2c6a48fe.chunk.css.map": "/use-route-as-state/static/css/main.2c6a48fe.chunk.css.map",
-    "static/js/2.d98f6ed7.chunk.js.LICENSE.txt": "/use-route-as-state/static/js/2.d98f6ed7.chunk.js.LICENSE.txt",
-    "static/js/main.83c24b81.chunk.js.LICENSE.txt": "/use-route-as-state/static/js/main.83c24b81.chunk.js.LICENSE.txt"
+    "static/css/main.3bd613a0.chunk.css.map": "/use-route-as-state/static/css/main.3bd613a0.chunk.css.map",
+    "static/js/2.2d13d500.chunk.js.LICENSE.txt": "/use-route-as-state/static/js/2.2d13d500.chunk.js.LICENSE.txt",
+    "static/js/main.94439b6d.chunk.js.LICENSE.txt": "/use-route-as-state/static/js/main.94439b6d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.82207e67.js",
-    "static/js/2.d98f6ed7.chunk.js",
-    "static/css/main.2c6a48fe.chunk.css",
-    "static/js/main.83c24b81.chunk.js"
+    "static/js/runtime-main.3802927c.js",
+    "static/js/2.2d13d500.chunk.js",
+    "static/css/main.3bd613a0.chunk.css",
+    "static/js/main.94439b6d.chunk.js"
   ]
 }
