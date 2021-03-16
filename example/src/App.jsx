@@ -1,11 +1,14 @@
 import CreateLinkWithStateCode from '!!raw-loader!./CreateLinkWithState'
+import UseQueryKeyCode from '!!raw-loader!./UseQueryKey'
 import UseQueryParamCode from '!!raw-loader!./UseQueryParam'
 import UseRouteParamCode from '!!raw-loader!./UseRouteParam'
 import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core'
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SyntaxHighlighter from 'react-syntax-highlighter'
+import { homepage } from '../package.json'
 import CreateLinkWithState from './CreateLinkWithState'
+import UseQueryKey from './UseQueryKey'
 import UseQueryParam from './UseQueryParam'
 import UseRouteParam from './UseRouteParam'
 
@@ -43,13 +46,18 @@ const Examples = () => {
       code={CreateLinkWithStateCode}>
       <CreateLinkWithState />
     </Example>
+    <Example title='Use Specific Query Key'
+      description='Get a reactive reference to specific Query item'
+      code={UseQueryKeyCode}>
+      <UseQueryKey />
+    </Example>
   </Box>
 }
 
 const App = () => {
 
   return (
-    <BrowserRouter basename='/use-route-as-state/'>
+    <BrowserRouter basename={homepage}>
       <Switch>
         <Route path='/' component={Examples} />
       </Switch>

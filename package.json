@@ -1,6 +1,6 @@
 {
   "name": "use-route-as-state",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "Use React Router route and query string as component state",
   "author": "baruchiro",
   "license": "MIT",

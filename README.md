@@ -34,7 +34,7 @@ const Example = () => {
         onChange={({ target }) => updateRouteParams({ param: target.value })} />
       <input
         value={ query }
-        onChange={({ target }) => useQueryAsState({ query: target.value })} />
+        onChange={({ target }) => updateQueryParams({ query: target.value })} />
     </div>
   )
 }
@@ -44,7 +44,7 @@ const Example = () => {
 
 ### `useParamsAsState`
 
-> **Type:** `useParamsAsState: () => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
+> **Type:** `useParamsAsState: (defaultValues?: Record<string, string>) => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
 
 **Use to sync the [URL Parameters](https://reactrouter.com/web/example/url-params) with you component.**
 
@@ -66,13 +66,39 @@ To use `Route Params`, you have to declare the params with the [React Router API
 
 ### `useQueryAsState`
 
-> **Type:** `useQueryAsState: () => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
+> **Type:** `useQueryAsState: (defaultValues?: Record<string, string>) => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
 
 **Use to sync the [Query Parameters](https://reactrouter.com/web/example/query-parameters) with you component.**
 
 This hook works just like `useParamsAsState`, except you don't need to declare any special *route* in the React Router. You can use this hook in any component, down in the tree, as long as there is a *Router* somewhere up in the tree.
 
 > Updating the `route` will [**`replace`**](https://reactrouter.com/web/api/history) the updated route to the `history`.
+
+#### `useQueryKeyAsState`
+
+> **Type:** `useQueryKeyAsState: (key: string, defaultValue?: string) => [string, (updatedValue: string) => void]`
+
+Instead of managing the whole **query** object, you can use this to get a reactive reference to the value itself.
+
+Example:
+
+```tsx
+// URL: /?foo=bar
+import * as React from 'react'
+import { useQueryKeyAsState } from 'use-route-as-state'
+
+const Example = () => {
+  const [foo, setFoo] = useQueryKeyAsState('foo')
+
+  return (
+    <div>
+      <input
+        value={ query }
+        onChange={({ target }) => setFoo(target.value)} />
+    </div>
+  )
+}
+```
 
 ## Development
 

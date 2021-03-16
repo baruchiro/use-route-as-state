@@ -3,7 +3,7 @@ import { generatePath, useHistory } from 'react-router-dom'
 import { encodeValues, useDecodedLocation, useDecodedRouteMatch } from './encodeDecode'
 import { objectToQueryParams, removeUndefined } from './helpers'
 
-export const useQueryAsState =  <T extends Record<string, string>>(defaultValues?: T): [T, (updatedParams: Partial<T>) => void] => {
+export const useQueryAsState = <T extends Record<string, string>>(defaultValues?: T): [T, (updatedParams: Partial<T>) => void] => {
     const { pathname, search } = useDecodedLocation()
     const history = useHistory()
 
@@ -14,6 +14,13 @@ export const useQueryAsState =  <T extends Record<string, string>>(defaultValues
     const queryWithDefault = useMemo(() => Object.assign({}, defaultValues, removeUndefined(search)), [search, defaultValues])
 
     return [queryWithDefault, updateQuery]
+}
+
+export const useQueryKeyAsState = (key: string, defaultValue?: string): [string, (updatedValue: string) => void] => {
+    const [{ [key]: value }, updateQuery] = useQueryAsState(defaultValue === undefined ? undefined : { [key]: defaultValue })
+    const updateKey = useCallback((newValue: string) => updateQuery({ [key]: newValue }), [updateQuery, key])
+
+    return [value, updateKey]
 }
 
 export const useParamsAsState = <T extends Record<string, string>>(defaultValues?: T): [T, (updatedParams: Partial<T>) => void] => {
