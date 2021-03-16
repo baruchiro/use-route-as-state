@@ -6,7 +6,6 @@ import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { homepage } from '../package.json'
 import CreateLinkWithState from './CreateLinkWithState'
 import UseQueryKey from './UseQueryKey'
 import UseQueryParam from './UseQueryParam'
@@ -57,7 +56,7 @@ const Examples = () => {
 const App = () => {
 
   return (
-    <BrowserRouter basename={homepage}>
+    <BrowserRouter basename='/use-route-as-state/'>
       <Switch>
         <Route path='/' component={Examples} />
       </Switch>
