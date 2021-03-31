@@ -6,7 +6,7 @@ import { State } from "./types"
 export const useDecodedLocation = () => {
     const { search, ...rest } = useLocation()
 
-    const decodedSearch = useMemo(() => decodeValues(getQueryParamsAsObject(search)), [search])
+    const decodedSearch = useMemo(() => getQueryParamsAsObject(search), [search])
 
     return { search: decodedSearch, ...rest }
 }
