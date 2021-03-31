@@ -2,8 +2,9 @@ import { useCallback, useMemo } from 'react'
 import { generatePath, useHistory } from 'react-router-dom'
 import { encodeValues, useDecodedLocation, useDecodedRouteMatch } from './encodeDecode'
 import { objectToQueryParams, removeUndefined } from './helpers'
+import { State } from './types'
 
-export const useQueryAsState = <T extends Record<string, string>>(defaultValues?: T): [T, (updatedParams: Partial<T>) => void] => {
+export const useQueryAsState = <T extends State>(defaultValues?: T): [T, (updatedParams: Partial<T>) => void] => {
     const { pathname, search } = useDecodedLocation()
     const history = useHistory()
 
@@ -23,7 +24,7 @@ export const useQueryKeyAsState = (key: string, defaultValue?: string): [string,
     return [value, updateKey]
 }
 
-export const useParamsAsState = <T extends Record<string, string>>(defaultValues?: T): [T, (updatedParams: Partial<T>) => void] => {
+export const useParamsAsState = <T extends State>(defaultValues?: T): [T, (updatedParams: Partial<T>) => void] => {
     const { path, params } = useDecodedRouteMatch<T>()
     const history = useHistory()
 

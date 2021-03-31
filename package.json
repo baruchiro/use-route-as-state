@@ -1,6 +1,6 @@
 {
   "name": "use-route-as-state",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Use React Router route and query string as component state",
   "author": "baruchiro",
   "license": "MIT",
@@ -14,6 +14,13 @@
   ],
   "keywords": [
     "react",
+    "url",
+    "query",
+    "parameters",
+    "hook",
+    "hooks",
+    "query param",
+    "react use",
     "react-hooks",
     "react-router"
   ],
@@ -40,7 +47,7 @@
     "@babel/core": "^7.11.6",
     "@babel/runtime": "^7.11.2",
     "@rollup/plugin-babel": "^5.2.0",
-    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-node-resolve": "^11.1.0",
     "@rollup/plugin-typescript": "^8.1.0",
     "@rollup/plugin-url": "^6.0.0",
