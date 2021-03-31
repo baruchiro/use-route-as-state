@@ -42,9 +42,13 @@ const Example = () => {
 
 ## API
 
+```typescript
+type State = Record<string, string>
+```
+
 ### `useParamsAsState`
 
-> **Type:** `useParamsAsState: (defaultValues?: Record<string, string>) => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
+> **Type:** `useParamsAsState: (defaultValues?: State) => [State, (updatedParams: State) => void]`
 
 **Use to sync the [URL Parameters](https://reactrouter.com/web/example/url-params) with you component.**
 
@@ -66,7 +70,7 @@ To use `Route Params`, you have to declare the params with the [React Router API
 
 ### `useQueryAsState`
 
-> **Type:** `useQueryAsState: (defaultValues?: Record<string, string>) => [Record<string, string>, (updatedParams: Record<string, string>) => void]`
+> **Type:** `useQueryAsState: (defaultValues?: State) => [State, (updatedParams: State) => void]`
 
 **Use to sync the [Query Parameters](https://reactrouter.com/web/example/query-parameters) with you component.**
 
