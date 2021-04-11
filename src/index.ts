@@ -22,7 +22,7 @@ export const useQueryString = (defaultValues?: Record<string, string>): [Record<
 
 export const useQueryStringKey = (key: string, defaultValue?: string): [string | undefined, (updatedValue: string) => void] => {
     const [{ [key]: value }, updateQuery] = useQueryString(defaultValue === undefined ? undefined : { [key]: defaultValue })
-    const updateKey = useCallback((newValue: string) => updateQuery({ [key]: newValue }), [updateQuery, key])
+    const updateKey = useCallback((newValue: string) => updateQuery((prev) => ({ ...prev, [key]: newValue })), [updateQuery, key])
 
     return [value, updateKey]
 }
