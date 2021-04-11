@@ -21,20 +21,20 @@ You can see a live demo, including code, [here](https://baruchiro.github.io/use-
 // URL: /:param?query=
 import * as React from 'react'
 
-import { useParamsAsState, useQueryAsState } from 'use-route-as-state'
+import { useRouteParams, useQueryParams } from 'use-route-as-state'
 
 const Example = () => {
-  const [{ param }, updateRouteParams] = useParamsAsState()
-  const [{ query }, updateQueryParams] = useQueryAsState()
+  const [{ param }, setRouteParams] = useRouteParams()
+  const [{ query }, setQueryParams] = useQueryParams()
 
   return (
     <div>
       <input
         value={ param }
-        onChange={({ target }) => updateRouteParams({ param: target.value })} />
+        onChange={({ target }) => setRouteParams({ param: target.value })} />
       <input
         value={ query }
-        onChange={({ target }) => updateQueryParams({ query: target.value })} />
+        onChange={({ target }) => setQueryParams({ query: target.value })} />
     </div>
   )
 }
@@ -42,13 +42,15 @@ const Example = () => {
 
 ## API
 
+This library is trying to behave like the `useState` React hook, by exposing a similar interface.
+
 ```typescript
-type State = Record<string, string>
+type DisaptchState = Dispatch<SetStateAction<Record<string, string>>>
 ```
 
-### `useParamsAsState`
+### `useRouteParams`
 
-> **Type:** `useParamsAsState: (defaultValues?: State) => [State, (updatedParams: State) => void]`
+> **Type:** `useRouteParams: (defaultValues?: Record<string, string>) => [Record<string, string>, DisaptchState]`
 
 **Use to sync the [URL Parameters](https://reactrouter.com/web/example/url-params) with you component.**
 
@@ -56,7 +58,7 @@ This custom hook returns an array with two elements:
 
 - The **first element** is a *string to string* object, when the `key` is the *route param* name, and the `value` is the value of this param.
 
-- The **second element** is a *function* to update the *route* with updated `value`s for specific `key`s. If one of the `key`s (the *Route Params*) is not in the *update object*, it will remain unchanged.
+- The **second element** is a *function* to update the *route* with new *string to string* object. Like in `useState`, you can set a new object, or set a function to transaform the `prev` state to a new one.
 
 > Updating the `route` will [**`push`**](https://reactrouter.com/web/api/history) the updated route to the `history`.
 
@@ -68,9 +70,9 @@ The *update function* (the **second element** from `useParamsAsState`) will chan
 
 To use `Route Params`, you have to declare the params with the [React Router API](https://reactrouter.com/web/example/url-params).
 
-### `useQueryAsState`
+### `useQueryString`
 
-> **Type:** `useQueryAsState: (defaultValues?: State) => [State, (updatedParams: State) => void]`
+> **Type:** `useQueryString: (defaultValues?: Record<string, string>) => [Record<string, string>, DisaptchState]`
 
 **Use to sync the [Query Parameters](https://reactrouter.com/web/example/query-parameters) with you component.**
 
@@ -78,9 +80,9 @@ This hook works just like `useParamsAsState`, except you don't need to declare a
 
 > Updating the `route` will [**`replace`**](https://reactrouter.com/web/api/history) the updated route to the `history`.
 
-#### `useQueryKeyAsState`
+#### `useQueryStringKey`
 
-> **Type:** `useQueryKeyAsState: (key: string, defaultValue?: string) => [string, (updatedValue: string) => void]`
+> **Type:** `useQueryStringKey: (key: string, defaultValue?: string) => [string | undefined, (updatedValue: string) => void]`
 
 Instead of managing the whole **query** object, you can use this to get a reactive reference to the value itself.
 
@@ -89,10 +91,10 @@ Example:
 ```tsx
 // URL: /?foo=bar
 import * as React from 'react'
-import { useQueryKeyAsState } from 'use-route-as-state'
+import { useQueryStringKey } from 'use-route-as-state'
 
 const Example = () => {
-  const [foo, setFoo] = useQueryKeyAsState('foo')
+  const [foo, setFoo] = useQueryStringKey('foo')
 
   return (
     <div>

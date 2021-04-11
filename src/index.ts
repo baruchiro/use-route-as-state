@@ -1,15 +1,18 @@
-import { useCallback, useMemo } from 'react'
+import { Dispatch, SetStateAction, useCallback, useMemo } from 'react'
 import { generatePath, useHistory } from 'react-router-dom'
 import { encodeValues, useDecodedLocation, useDecodedRouteMatch } from './encodeDecode'
 import { objectToQueryParams, removeUndefined } from './helpers'
-import { State } from './types'
+export * from './deprecated'
 
-export const useQueryAsState = <T extends State>(defaultValues?: T): [T, (updatedParams: Partial<T>) => void] => {
+type DisaptchState = Dispatch<SetStateAction<Record<string, string>>>
+
+export const useQueryString = (defaultValues?: Record<string, string>): [Record<string, string>, DisaptchState] => {
     const { pathname, search } = useDecodedLocation()
     const history = useHistory()
 
-    const updateQuery = useCallback((updatedParams: Partial<T>) => {
-        history.replace(pathname + objectToQueryParams(encodeValues({ ...search, ...updatedParams })))
+    const updateQuery: DisaptchState = useCallback((dispatch: SetStateAction<Record<string, string>>) => {
+        const updatedParams = typeof dispatch === 'function' ? dispatch(search) : dispatch
+        history.replace(pathname + objectToQueryParams(encodeValues(updatedParams)))
     }, [search, pathname, history])
 
     const queryWithDefault = useMemo(() => Object.assign({}, defaultValues, removeUndefined(search)), [search, defaultValues])
@@ -17,19 +20,20 @@ export const useQueryAsState = <T extends State>(defaultValues?: T): [T, (update
     return [queryWithDefault, updateQuery]
 }
 
-export const useQueryKeyAsState = (key: string, defaultValue?: string): [string, (updatedValue: string) => void] => {
-    const [{ [key]: value }, updateQuery] = useQueryAsState(defaultValue === undefined ? undefined : { [key]: defaultValue })
+export const useQueryStringKey = (key: string, defaultValue?: string): [string | undefined, (updatedValue: string) => void] => {
+    const [{ [key]: value }, updateQuery] = useQueryString(defaultValue === undefined ? undefined : { [key]: defaultValue })
     const updateKey = useCallback((newValue: string) => updateQuery({ [key]: newValue }), [updateQuery, key])
 
     return [value, updateKey]
 }
 
-export const useParamsAsState = <T extends State>(defaultValues?: T): [T, (updatedParams: Partial<T>) => void] => {
-    const { path, params } = useDecodedRouteMatch<T>()
+export const useRouteParams = (defaultValues?: Record<string, string>): [Record<string, string>, DisaptchState] => {
+    const { path, params } = useDecodedRouteMatch()
     const history = useHistory()
 
-    const updateParams = useCallback((updatedParams: Partial<T>) => {
-        history.push(generatePath(path, encodeValues({ ...params, ...updatedParams })))
+    const updateParams = useCallback((dispatch: SetStateAction<Record<string, string>>) => {
+        const updatedParams = typeof dispatch === 'function' ? dispatch(params) : dispatch
+        history.push(generatePath(path, encodeValues(updatedParams)))
     }, [path, params, history])
 
     const paramsWithDefault = useMemo(() => Object.assign({}, defaultValues, removeUndefined(params)), [params, defaultValues])
