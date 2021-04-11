@@ -1,13 +1,12 @@
 import { Box, TextField, Typography } from '@material-ui/core'
 import React from 'react'
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
-import { useParamsAsState } from 'use-route-as-state'
-
+import { useRouteParams } from 'use-route-as-state'
 
 const UseRouteParam = () => {
-    const [params, updateParams] = useParamsAsState()
+    const [params, updateParams] = useRouteParams()
 
-    const onChange = (e) => updateParams({ [e.target.id]: e.target.value || undefined })
+    const onChange = (e) => updateParams(e.target.value && { [e.target.id]: e.target.value })
 
     return <Box display='flex' flexDirection='column'>
         <TextField id='rParam' label={`Insert value for 'rParam'`}

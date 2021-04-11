@@ -1,9 +1,9 @@
 import { Box, TextField, Typography } from '@material-ui/core'
 import React from 'react'
-import { useQueryKeyAsState } from 'use-route-as-state'
+import { useQueryStringKey } from 'use-route-as-state'
 
 const UseQueryKey = () => {
-    const [foo, setFoo] = useQueryKeyAsState('foo', 'bar')
+    const [foo, setFoo] = useQueryStringKey('foo', 'bar')
 
     const onChange = (e) => setFoo(e.target.value)
 

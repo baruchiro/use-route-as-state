@@ -1,6 +1,7 @@
 import { useMemo } from "react"
 import { useLocation, useRouteMatch } from "react-router-dom"
-import { getQueryParamsAsObject, removeUndefined } from "./helpers"
+import { getQueryParamsAsObject } from "./helpers"
+import { State } from "./types"
 
 export const useDecodedLocation = () => {
     const { search, ...rest } = useLocation()
@@ -10,22 +11,22 @@ export const useDecodedLocation = () => {
     return { search: decodedSearch, ...rest }
 }
 
-export const useDecodedRouteMatch = () => {
+export const useDecodedRouteMatch = <T extends State>() => {
     const { params, ...rest } = useRouteMatch()
 
-    const decodedParams = useMemo(() => decodeValues(params as Record<string, string>), [params])
+    const decodedParams = useMemo(() => decodeValues(params as T), [params])
 
     return { params: decodedParams, ...rest }
 }
 
-export const decodeValues = (obj: Record<string, string>) => Object.keys(obj)
+export const decodeValues = <T extends State>(obj: T) => Object.keys(obj)
     .reduce((acc, key) => ({
         ...acc,
         [key]: obj[key] && decodeURIComponent(obj[key])
-    }), {} as Record<string, string>)
+    }), {} as T)
 
-export const encodeValues = (obj: Record<string, string>) => Object.keys(removeUndefined(obj))
+export const encodeValues = <T extends State>(obj: T) => Object.keys(obj)
     .reduce((acc, key) => ({
         ...acc,
         [key]: obj[key] && encodeURIComponent(obj[key])
-    }), {} as Record<string, string>)
+    }), {} as T)

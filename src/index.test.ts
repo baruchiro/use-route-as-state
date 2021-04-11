@@ -1,4 +1,4 @@
-import { useParamsAsState } from './'
+import { useRouteParams } from './'
 import { renderHook, act } from "@testing-library/react-hooks";
 
 // mock timer using jest
@@ -6,7 +6,7 @@ jest.useFakeTimers();
 
 describe.skip('useMyHook', () => {
   it('updates every second', () => {
-    const { result } = renderHook(() => useParamsAsState());
+    const { result } = renderHook(() => useRouteParams());
 
     expect(result.current).toBe(0);
 

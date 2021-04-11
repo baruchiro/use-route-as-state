@@ -1,10 +1,10 @@
 import { Box, TextField, Typography } from '@material-ui/core'
 import React from 'react'
-import { useQueryAsState } from 'use-route-as-state'
+import { useQueryString } from 'use-route-as-state'
 import SearchList from './SearchList'
 
 const UseQueryParam = () => {
-    const [params, updateParams] = useQueryAsState()
+    const [params, updateParams] = useQueryString()
 
     const onChange = (e) => updateParams({ [e.target.id]: e.target.value })
 
