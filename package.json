@@ -51,7 +51,7 @@
     "@rollup/plugin-node-resolve": "^11.1.0",
     "@rollup/plugin-typescript": "^8.1.0",
     "@rollup/plugin-url": "^6.0.0",
-    "@testing-library/react-hooks": "^5.0.0",
+    "@testing-library/react-hooks": "^6.0.0",
     "@types/jest": "^26.0.13",
     "@types/react": "^17.0.0",
     "@types/react-router-dom": "^5.1.5",
