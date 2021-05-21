@@ -1,29 +1,34 @@
-import { useRouteParams } from './'
-import { renderHook, act } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react-hooks";
+import { useQueryStringKey } from './index';
+import wrapper from './test/RouterWrapper';
 
-// mock timer using jest
-jest.useFakeTimers();
+type HookAction<TState> = (props: unknown) => [TState | undefined, (updatedValue: TState) => void]
+const helper = <TState>(action: HookAction<TState>) => {
+  const { result } = renderHook(action, { wrapper })
 
-describe.skip('useMyHook', () => {
-  it('updates every second', () => {
-    const { result } = renderHook(() => useRouteParams());
+  return {
+    result,
+    get state() {
+      return result.current[0]
+    },
+    get setState() {
+      return result.current[1]
+    }
 
-    expect(result.current).toBe(0);
+  }
+}
 
-    // Fast-forward 1sec
+describe('useQueryStringKey', () => {
+
+  it('Should update the state', () => {
+    const result = helper(() => useQueryStringKey('foo'))
+
+    expect(result.state).toBe(undefined)
+
     act(() => {
-      jest.advanceTimersByTime(1000);
-    });
+      result.setState('bar')
+    })
 
-    // Check after total 1 sec
-    expect(result.current).toBe(1);
-
-    // Fast-forward 1 more sec
-    act(() => {
-      jest.advanceTimersByTime(1000);
-    });
-
-    // Check after total 2 sec
-    expect(result.current).toBe(2);
+    expect(result.state).toBe('bar')
   })
 })

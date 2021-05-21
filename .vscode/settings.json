@@ -1,0 +1,4 @@
+{
+    "jest.jestCommandLine": "yarn test",
+    "compile-hero.disable-compile-files-on-did-save-code": false
+}
