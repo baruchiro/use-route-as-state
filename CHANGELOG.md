@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 Update `useQueryStringKey` to allow dispatch.
 
+### Added
+
+- Hooks test coverage. Now we can reproduce bug easily.
+
 ### Changed
 
 - `useQueryStringKey`: now with the type `(key: string, defaultValue?: string) => [string | undefined, Dispatch<SetStateAction<string>>]` (Now you can update with the previous value)
