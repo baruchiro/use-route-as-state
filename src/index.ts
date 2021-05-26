@@ -4,7 +4,7 @@ import { encodeValues, useDecodedLocation, useDecodedRouteMatch } from './encode
 import { objectToQueryParams, removeUndefined } from './helpers'
 export * from './deprecated'
 
-type DisaptchState = Dispatch<SetStateAction<Record<string, string>>>
+export type DisaptchState = Dispatch<SetStateAction<Record<string, string>>>
 
 export const useQueryString = (defaultValues?: Record<string, string>): [Record<string, string>, DisaptchState] => {
     const { pathname, search } = useDecodedLocation()

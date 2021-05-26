@@ -1,34 +1,96 @@
-import { act, renderHook } from "@testing-library/react-hooks";
-import { useQueryStringKey } from './index';
-import wrapper from './test/RouterWrapper';
+import { act } from "@testing-library/react-hooks";
+import { useQueryStringKey } from ".";
+import { useQueryString } from './index';
+import renderer, { StateActions } from "./test/renderer";
 
-type HookAction<TState> = (props: unknown) => [TState | undefined, (updatedValue: TState) => void]
-const helper = <TState>(action: HookAction<TState>) => {
-  const { result } = renderHook(action, { wrapper })
+describe('useQueryString', () => {
 
-  return {
-    result,
-    get state() {
-      return result.current[0]
-    },
-    get setState() {
-      return result.current[1]
-    }
+  let state: StateActions<Record<string, string>>
+  let history: ReturnType<typeof renderer>['history']
 
-  }
-}
+  beforeEach(() => {
+    ({ state, history } = renderer(() => useQueryString()))
+  })
+
+  it('Should have default empty', () => {
+
+    expect(state.get).toStrictEqual({})
+    expect(history.location.search).toBe('')
+  })
+
+  it('Should have full object and search', () => {
+    act(() => {
+      state.set({
+        foo: 'bar',
+        bazz: 'eggs'
+      })
+    })
+
+    expect(state.get).toStrictEqual({
+      foo: 'bar',
+      bazz: 'eggs'
+    })
+    expect(history.location.search).toBe('?foo=bar&bazz=eggs')
+  })
+
+  it('Should remove field', () => {
+    act(() => {
+      state.set({
+        foo: 'bar',
+        bazz: 'eggs'
+      })
+    })
+
+    act(() =>
+      state.set(({ foo, ...rest }) => rest)
+    )
+    expect(state.get).toStrictEqual({ bazz: 'eggs' })
+    expect(history.location.search).toBe('?bazz=eggs')
+  })
+
+  it('Should show empty string', () => {
+    act(() =>
+      state.set({ bazz: '' })
+    )
+    expect(state.get).toStrictEqual({ bazz: '' })
+    expect(history.location.search).toBe('?bazz=')
+  })
+})
 
 describe('useQueryStringKey', () => {
 
-  it('Should update the state', () => {
-    const result = helper(() => useQueryStringKey('foo'))
+  let state: StateActions<string>
+  let history: ReturnType<typeof renderer>['history']
 
-    expect(result.state).toBe(undefined)
+  beforeEach(() => {
+    ({ state, history } = renderer(() => useQueryStringKey('foo')))
+  })
 
+  it('Should be undefined by default', () => {
+
+    expect(state.get).toBe(undefined)
+    expect(history.location.search).toBe('')
+  })
+
+  it('Should update the state and the search', () => {
     act(() => {
-      result.setState('bar')
+      state.set('bar')
     })
 
-    expect(result.state).toBe('bar')
+    expect(state.get).toBe('bar')
+    expect(history.location.search).toBe('?foo=bar')
+  })
+
+  it('Should use the previous state', () => {
+    act(() => {
+      state.set('bar')
+    })
+
+    act(() => {
+      state.set((prev) => prev + prev)
+    })
+
+    expect(state.get).toBe('barbar')
+    expect(history.location.search).toBe('?foo=barbar')
   })
 })
