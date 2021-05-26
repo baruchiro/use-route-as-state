@@ -1,10 +1,16 @@
 import { createMemoryHistory } from "history"
 import React from "react"
-import { Router } from "react-router-dom"
+import { Route, Router } from "react-router-dom"
 
-export const getHistoryWrapper = () => {
+export const getHistoryWrapper = (path?: string) => {
     const history = createMemoryHistory()
-    const wrapper: React.FC = ({ children }) => <Router history={history}>{children}</Router>
+    
+    const wrapper: React.FC<{ path?: string }> = ({ children }) =>
+        <Router history={history}>
+            <Route path={path}>
+                {children}
+            </Route>
+        </Router>
     return {
         history,
         wrapper

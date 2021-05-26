@@ -7,8 +7,8 @@ export type StateActions<TState> = {
     readonly set: Dispatch<SetStateAction<TState>>;
 }
 type HookAction<TState> = (props: unknown) => [TState | undefined, Dispatch<SetStateAction<TState>>]
-const renderer = <TState>(action: HookAction<TState>) => {
-    const { wrapper, history } = getHistoryWrapper()
+const renderer = <TState>(action: HookAction<TState>, path?: string) => {
+    const { wrapper, history } = getHistoryWrapper(path)
     const { result } = renderHook(action, { wrapper })
 
     return {
