@@ -20,9 +20,12 @@ export const useQueryString = (defaultValues?: Record<string, string>): [Record<
     return [queryWithDefault, updateQuery]
 }
 
-export const useQueryStringKey = (key: string, defaultValue?: string): [string | undefined, (updatedValue: string) => void] => {
+export const useQueryStringKey = (key: string, defaultValue?: string): [string | undefined, Dispatch<SetStateAction<string>>] => {
     const [{ [key]: value }, updateQuery] = useQueryString(defaultValue === undefined ? undefined : { [key]: defaultValue })
-    const updateKey = useCallback((newValue: string) => updateQuery((prev) => ({ ...prev, [key]: newValue })), [updateQuery, key])
+    const updateKey = useCallback((dispatch: SetStateAction<string>) => {
+        const newValue = typeof dispatch === 'function' ? dispatch(value) : dispatch
+        newValue === undefined ? updateQuery(({ [key]: _, ...rest }) => rest) : updateQuery((prev) => ({ ...prev, [key]: newValue }))
+    }, [updateQuery, key, value])
 
     return [value, updateKey]
 }

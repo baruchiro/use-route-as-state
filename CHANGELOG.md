@@ -6,6 +6,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.0.0] - 2021-05-26
+
+Update `useQueryStringKey` to allow dispatch.
+
+### Changed
+
+- `useQueryStringKey`: now with the type `(key: string, defaultValue?: string) => [string | undefined, Dispatch<SetStateAction<string>>]` (Now you can update with the previous value)
+- **breaking changes**: The behaviour of `useQueryStringKey` in case of updating with empty string or `undefined` was not clear. You may expect for **breaking changes** in this case.
+
 ## [3.0.2] - 2021-05-20
 
 Dependencies Upgrades.
