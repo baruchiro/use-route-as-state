@@ -13,9 +13,16 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: yarn test
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn
+      - run: yarn build
   
   version:
-    needs: [test]
+    needs: [test, build]
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
