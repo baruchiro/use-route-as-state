@@ -1,4 +1,4 @@
-import { getQueryParamsAsObject } from "./helpers"
+import { getQueryParamsAsObject } from "../helpers"
 
 describe('getQueryParamsAsObject', () => {
     it.each([
