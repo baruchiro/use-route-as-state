@@ -82,7 +82,7 @@ This hook works just like `useParamsAsState`, except you don't need to declare a
 
 #### `useQueryStringKey`
 
-> **Type:** `useQueryStringKey: (key: string, defaultValue?: string) => [string | undefined, (updatedValue: string) => void]`
+> **Type:** `useQueryStringKey: (key: string, defaultValue?: string) => [string | undefined, Dispatch<SetStateAction<string>>]`
 
 Instead of managing the whole **query** object, you can use this to get a reactive reference to the value itself.
 

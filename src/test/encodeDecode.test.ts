@@ -1,4 +1,4 @@
-import { decodeValues, encodeValues } from "./encodeDecode"
+import { decodeValues, encodeValues } from "../encodeDecode"
 
 describe('encoding', () => {
 

@@ -1,1 +1,1 @@
-dist/*.test.*
+dist/**/*.test.*
