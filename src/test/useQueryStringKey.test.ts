@@ -29,6 +29,28 @@ describe('useQueryStringKey', () => {
     expect(history.location.search).toBe('?foo=bar')
   })
 
+  it('Should show empty string', () => {
+    const { state, history } = renderer(() => useQueryStringKey('foo'))
+
+    act(() => {
+      state.set('')
+    })
+
+    expect(state.get).toBe('')
+    expect(history.location.search).toBe('?foo=')
+  })
+
+  it('Should show empty string and not default', () => {
+    const { state, history } = renderer(() => useQueryStringKey('foo', 'bar'))
+
+    act(() => {
+      state.set('')
+    })
+
+    expect(state.get).toBe('')
+    expect(history.location.search).toBe('?foo=')
+  })
+
   it('Should reset to default', () => {
     const { state, history } = renderer(() => useQueryStringKey('foo', 'bar'))
 
@@ -37,7 +59,8 @@ describe('useQueryStringKey', () => {
     })
 
     act(() => {
-      state.set('')
+      // @ts-expect-error
+      state.set()
     })
 
     expect(state.get).toBe('bar')
