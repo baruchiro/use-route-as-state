@@ -59,7 +59,7 @@ describe('useQueryStringKey', () => {
     })
 
     act(() => {
-      // @ts-expect-error
+      // @ts-expect-error: It not supported also in useState
       state.set()
     })
 
