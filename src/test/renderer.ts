@@ -9,6 +9,7 @@ export type StateActions<TState> = {
 type HookAction<TState> = (props: unknown) => [TState | undefined, Dispatch<SetStateAction<TState>>]
 const renderer = <TState>(action: HookAction<TState>, path?: string) => {
     const { wrapper, history } = getHistoryWrapper(path)
+
     const { result } = renderHook(action, { wrapper })
 
     return {
@@ -22,6 +23,25 @@ const renderer = <TState>(action: HookAction<TState>, path?: string) => {
                 return result.current[1]
             }
         }
+    }
+}
+
+export const multiRenderer = <TState>(action: HookAction<TState>[], path?: string) => {
+    const { wrapper, history } = getHistoryWrapper(path)
+
+    const states = action.map((act) => renderHook(act, { wrapper }))
+        .map(({ result }) => ({
+            get get() {
+                return result.current[0]
+            },
+            get set() {
+                return result.current[1]
+            }
+        }))
+
+    return {
+        history,
+        states
     }
 }
 
