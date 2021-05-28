@@ -45,13 +45,13 @@ const Example = () => {
 This library is trying to behave like the `useState` React hook, by exposing a similar interface.
 
 ```typescript
-type DisaptchState<TState> = Dispatch<SetStateAction<TState>>
+type DispatchState<TState> = Dispatch<SetStateAction<TState>>
 type RouteObject = Record<string, string>
 ```
 
 ### `useRouteParams`
 
-> **Type:** `useRouteParams: (defaultValues?: RouteObject): [RouteObject, DisaptchState<RouteObject>]`
+> **Type:** `useRouteParams: (defaultValues?: RouteObject): [RouteObject, DispatchState<RouteObject>]`
 
 **Use to sync the [URL Parameters](https://reactrouter.com/web/example/url-params) with you component.**
 
@@ -73,7 +73,7 @@ To use `Route Params`, you have to declare the params with the [React Router API
 
 ### `useQueryString`
 
-> **Type:** `useQueryString: (defaultValues?: RouteObject): [RouteObject, DisaptchState<RouteObject>]`
+> **Type:** `useQueryString: (defaultValues?: RouteObject): [RouteObject, DispatchState<RouteObject>]`
 
 **Use to sync the [Query Parameters](https://reactrouter.com/web/example/query-parameters) with you component.**
 
@@ -116,7 +116,7 @@ type UrlState = {
 }
 ```
 
-> **Type:** `useUrlState: (defaultValues?: UrlState): [UrlState, DisaptchState<UrlState>]`
+> **Type:** `useUrlState: (defaultValues?: UrlState): [UrlState, DispatchState<UrlState>]`
 
 Due to limitation in *React Router*, and *React* itself, you can't use different hooks here together during one render cycle.
 

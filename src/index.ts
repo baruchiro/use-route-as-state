@@ -4,14 +4,14 @@ import { encodeValues, useDecodedLocation, useDecodedRouteMatch } from './encode
 import { objectToQueryParams, removeUndefined } from './helpers'
 export * from './deprecated'
 
-type DisaptchState<TState> = Dispatch<SetStateAction<TState>>
+type DispatchState<TState> = Dispatch<SetStateAction<TState>>
 type RouteObject = Record<string, string>
 
-export const useQueryString = (defaultValues?: RouteObject): [RouteObject, DisaptchState<RouteObject>] => {
+export const useQueryString = (defaultValues?: RouteObject): [RouteObject, DispatchState<RouteObject>] => {
     const { pathname, search } = useDecodedLocation()
     const history = useHistory()
 
-    const updateQuery: DisaptchState<RouteObject> = useCallback((dispatch: SetStateAction<RouteObject>) => {
+    const updateQuery: DispatchState<RouteObject> = useCallback((dispatch: SetStateAction<RouteObject>) => {
         const updatedParams = typeof dispatch === 'function' ? dispatch(search) : dispatch
         history.replace(pathname + objectToQueryParams(encodeValues(updatedParams)))
     }, [search, pathname, history])
@@ -31,7 +31,7 @@ export const useQueryStringKey = (key: string, defaultValue?: string): [string |
     return [value, updateKey]
 }
 
-export const useRouteParams = (defaultValues?: RouteObject): [RouteObject, DisaptchState<RouteObject>] => {
+export const useRouteParams = (defaultValues?: RouteObject): [RouteObject, DispatchState<RouteObject>] => {
     const { path, params } = useDecodedRouteMatch()
     const history = useHistory()
 
@@ -49,7 +49,7 @@ export type UrlState = {
     params: RouteObject,
     query: RouteObject
 }
-export const useUrlState = (defaultValues?: UrlState): [UrlState, DisaptchState<UrlState>] => {
+export const useUrlState = (defaultValues?: UrlState): [UrlState, DispatchState<UrlState>] => {
     const history = useHistory()
     const { path, params } = useDecodedRouteMatch()
     const { search } = useDecodedLocation()
