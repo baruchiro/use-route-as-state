@@ -118,9 +118,9 @@ type UrlState = {
 
 > **Type:** `useUrlState: (defaultValues?: UrlState): [UrlState, DispatchState<UrlState>]`
 
-Due to limitation in *React Router*, and *React* itself, you can't use different hooks here together during one render cycle.
+Due to limitations in *React Router*, and *React* itself, you can't use different hooks here together during one render cycle.
 
-In order to solve that, you can use this hook to control both *route params* and *qeury string* at once.
+In order to solve that, you can use this hook to control both *route params* and *query string* at once.
 
 ## Development
 
