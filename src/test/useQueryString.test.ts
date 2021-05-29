@@ -1,23 +1,32 @@
 import { act } from "@testing-library/react-hooks";
 import { useQueryString } from '../index';
-import renderer, { StateActions } from "./renderer";
+import renderer from "./renderer";
 
 describe('useQueryString', () => {
 
-  let state: StateActions<Record<string, string>>
-  let history: ReturnType<typeof renderer>['history']
-
-  beforeEach(() => {
-    ({ state, history } = renderer(() => useQueryString()))
-  })
-
   it('Should have default empty', () => {
+    const { state, history } = renderer(() => useQueryString())
 
     expect(state.get).toStrictEqual({})
     expect(history.location.search).toBe('')
   })
 
+  it('Should be the default input', () => {
+    const { state, history } = renderer(() => useQueryString({
+      foo: 'bar',
+      bazz: 'eggs'
+    }))
+
+    expect(state.get).toStrictEqual({
+      foo: 'bar',
+      bazz: 'eggs'
+    })
+    expect(history.location.search).toBe('')
+  })
+
   it('Should have full object and search', () => {
+    const { state, history } = renderer(() => useQueryString())
+
     act(() => {
       state.set({
         foo: 'bar',
@@ -33,6 +42,8 @@ describe('useQueryString', () => {
   })
 
   it('Should remove field', () => {
+    const { state, history } = renderer(() => useQueryString())
+
     act(() => {
       state.set({
         foo: 'bar',
@@ -48,6 +59,8 @@ describe('useQueryString', () => {
   })
 
   it('Should show empty string', () => {
+    const { state, history } = renderer(() => useQueryString())
+
     act(() =>
       state.set({ bazz: '' })
     )
@@ -55,3 +68,5 @@ describe('useQueryString', () => {
     expect(history.location.search).toBe('?bazz=')
   })
 })
+
+// TODO: defaults

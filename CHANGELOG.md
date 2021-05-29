@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.1.0] - 2021-05-28
+
+Add `useUrlState` to change both *Route Params* and *Query String*.
+
+### Added
+
+- `useUrlState`: with type `(defaultValues?: UrlState): [UrlState, DispatchState<UrlState>]`.
+
 ## [4.0.0] - 2021-05-26
 
 Update `useQueryStringKey` to allow dispatch.
@@ -41,8 +49,8 @@ Change the API to the `useState` interface.
 
 ### Added
 
-- `useRouteParams`: with the type `(defaultValues?: Record<string, string>) => [Record<string, string>, DisaptchState]`
-- `useQueryString`: with the type `(defaultValues?: Record<string, string>) => [Record<string, string>, DisaptchState]`
+- `useRouteParams`: with the type `(defaultValues?: Record<string, string>) => [Record<string, string>, DispatchState]`
+- `useQueryString`: with the type `(defaultValues?: Record<string, string>) => [Record<string, string>, DispatchState]`
 - `useQueryStringKey`: with the type `(key: string, defaultValue?: string) => [string | undefined, (updatedValue: string) => void]`
 
 ### Changed

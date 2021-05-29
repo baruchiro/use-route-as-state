@@ -45,12 +45,13 @@ const Example = () => {
 This library is trying to behave like the `useState` React hook, by exposing a similar interface.
 
 ```typescript
-type DisaptchState = Dispatch<SetStateAction<Record<string, string>>>
+type DispatchState<TState> = Dispatch<SetStateAction<TState>>
+type RouteObject = Record<string, string>
 ```
 
 ### `useRouteParams`
 
-> **Type:** `useRouteParams: (defaultValues?: Record<string, string>) => [Record<string, string>, DisaptchState]`
+> **Type:** `useRouteParams: (defaultValues?: RouteObject): [RouteObject, DispatchState<RouteObject>]`
 
 **Use to sync the [URL Parameters](https://reactrouter.com/web/example/url-params) with you component.**
 
@@ -72,7 +73,7 @@ To use `Route Params`, you have to declare the params with the [React Router API
 
 ### `useQueryString`
 
-> **Type:** `useQueryString: (defaultValues?: Record<string, string>) => [Record<string, string>, DisaptchState]`
+> **Type:** `useQueryString: (defaultValues?: RouteObject): [RouteObject, DispatchState<RouteObject>]`
 
 **Use to sync the [Query Parameters](https://reactrouter.com/web/example/query-parameters) with you component.**
 
@@ -82,7 +83,7 @@ This hook works just like `useParamsAsState`, except you don't need to declare a
 
 #### `useQueryStringKey`
 
-> **Type:** `useQueryStringKey: (key: string, defaultValue?: string) => [string | undefined, Dispatch<SetStateAction<string>>]`
+> **Type:** `useQueryStringKey: (key: string, defaultValue?: string): [string | undefined, Dispatch<SetStateAction<string>>]`
 
 Instead of managing the whole **query** object, you can use this to get a reactive reference to the value itself.
 
@@ -105,6 +106,21 @@ const Example = () => {
   )
 }
 ```
+
+### `useUrlState`
+
+```typescript
+type UrlState = {
+  params: RouteObject,
+  query: RouteObject
+}
+```
+
+> **Type:** `useUrlState: (defaultValues?: UrlState): [UrlState, DispatchState<UrlState>]`
+
+Due to limitations in *React Router*, and *React* itself, you can't use different hooks here together during one render cycle.
+
+In order to solve that, you can use this hook to control both *route params* and *query string* at once.
 
 ## Development
 
