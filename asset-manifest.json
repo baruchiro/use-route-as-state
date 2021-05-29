@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/use-route-as-state/static/css/main.3bd613a0.chunk.css",
-    "main.js": "/use-route-as-state/static/js/main.0d7320b3.chunk.js",
-    "main.js.map": "/use-route-as-state/static/js/main.0d7320b3.chunk.js.map",
+    "main.js": "/use-route-as-state/static/js/main.3b89ed8e.chunk.js",
+    "main.js.map": "/use-route-as-state/static/js/main.3b89ed8e.chunk.js.map",
     "runtime-main.js": "/use-route-as-state/static/js/runtime-main.3802927c.js",
     "runtime-main.js.map": "/use-route-as-state/static/js/runtime-main.3802927c.js.map",
     "static/js/2.b3942dd8.chunk.js": "/use-route-as-state/static/js/2.b3942dd8.chunk.js",
@@ -10,12 +10,12 @@
     "index.html": "/use-route-as-state/index.html",
     "static/css/main.3bd613a0.chunk.css.map": "/use-route-as-state/static/css/main.3bd613a0.chunk.css.map",
     "static/js/2.b3942dd8.chunk.js.LICENSE.txt": "/use-route-as-state/static/js/2.b3942dd8.chunk.js.LICENSE.txt",
-    "static/js/main.0d7320b3.chunk.js.LICENSE.txt": "/use-route-as-state/static/js/main.0d7320b3.chunk.js.LICENSE.txt"
+    "static/js/main.3b89ed8e.chunk.js.LICENSE.txt": "/use-route-as-state/static/js/main.3b89ed8e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3802927c.js",
     "static/js/2.b3942dd8.chunk.js",
     "static/css/main.3bd613a0.chunk.css",
-    "static/js/main.0d7320b3.chunk.js"
+    "static/js/main.3b89ed8e.chunk.js"
   ]
 }
