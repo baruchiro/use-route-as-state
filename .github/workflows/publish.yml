@@ -14,94 +14,14 @@ jobs:
       - run: yarn lint
       - run: yarn test
 
-  build:
+  release:
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: yarn
       - run: yarn build
-  
-  version:
-    needs: [test, build]
-    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set version in Env
-        shell: bash
-        run: |
-          version=`awk -F ':' '/version/ {print $2}' package.json | sed 's/\"//g' | sed 's/,//g' | sed 's/ //g'`
-          echo "package_version=$version" >> $GITHUB_ENV
-          echo "Version is $version"
-      - uses: actions/github-script@v2.0.1
-        name: Check if current version is a published release (by release tag)
-        id: check_release
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          # debug: true
-          script: |
-            const releases = await github.repos.listReleases({
-              owner: '${{github.repository_owner}}',
-              repo: 'use-route-as-state'
-            })
-            const published_release_tags = releases.data.filter(release => !release.draft).map(release => release.tag_name)
-            const newRelease = !published_release_tags.includes('v${{ env.package_version }}')
-            console.log('newRelease: ' + newRelease)
-            return newRelease
-    outputs:
-      isRelease: ${{steps.check_release.outputs.result}}
-      packageVersion: ${{ env.package_version }}
-  
-  release:
-    needs: [version]
-    if: ${{ needs.version.outputs.isRelease == 'true' }}
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-      with:
-        tag_name: v${{ needs.version.outputs.packageVersion }}
-        release_name: Release ${{ needs.version.outputs.packageVersion }}
-        draft: false
-        prerelease: false
-  
-  publish-gpr:
-    needs: [release]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-          scope: '@baruchiro'
-      - run: yarn
-      - run: yarn gpr-setup
-      - run: yarn publish
+      - run: yarn release
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-  publish-npm:
-    needs: [version, publish-gpr]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - run: yarn
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - uses: ethomson/send-tweet-action@ee76e315ba1f8fed3444282c3c8be0fbb369c751
-        with:
-          status: "${{github.repository}} V${{needs.version.outputs.packageVersion}} is published!\n\nhttps://www.npmjs.com/package/use-route-as-state\n\n@github #send_tweet_action @npmjs #use_route_as_state @reactjs\n\nAvailable in Github"
-          consumer-key: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
-          consumer-secret: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
-          access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-          access-token-secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
