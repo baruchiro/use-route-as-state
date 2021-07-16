@@ -1,6 +1,6 @@
 {
   "name": "use-route-as-state",
-  "version": "4.1.0",
+  "version": "0.0.0-development",
   "description": "Use React Router route and query string as component state",
   "author": "baruchiro",
   "license": "MIT",
@@ -37,7 +37,8 @@
     "start": "rollup -c -w",
     "prepare": "yarn run build",
     "build:pages": "cd example && yarn install && yarn run build",
-    "gpr-setup": "node .github/scripts/gpr.js"
+    "gpr-setup": "node .github/scripts/gpr.js",
+    "release": "semantic-release"
   },
   "peerDependencies": {
     "react": "^16.0.0",
@@ -51,12 +52,14 @@
     "@rollup/plugin-node-resolve": "^11.1.0",
     "@rollup/plugin-typescript": "^8.1.0",
     "@rollup/plugin-url": "^6.0.0",
+    "@semantic-release/changelog": "^5.0.1",
     "@testing-library/react-hooks": "^7.0.0",
     "@types/jest": "^26.0.13",
     "@types/react": "^17.0.0",
     "@types/react-router-dom": "^5.1.5",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
+    "conventional-changelog-eslint": "^3.0.9",
     "cross-env": "^7.0.2",
     "eslint": "^7.9.0",
     "eslint-friendly-formatter": "^4.0.1",
@@ -68,6 +71,7 @@
     "react-test-renderer": "^17.0.1",
     "rollup": "^2.26.9",
     "rollup-plugin-peer-deps-external": "^2.2.0",
+    "semantic-release": "^17.4.4",
     "tslib": "^2.0.1",
     "typescript": "^4.0.2"
   },
