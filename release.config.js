@@ -15,6 +15,12 @@ module.exports = {
             {
                 "changelogFile": "CHANGELOG.md"
             }
+        ],
+        [
+            "@semantic-release/exec",
+            {
+                "successCmd": "echo \"SEMVER_VERSION=${nextRelease.version}\" > $GITHUB_ENV"
+            }
         ]
     ]
 }
