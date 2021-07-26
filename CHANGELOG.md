@@ -1,3 +1,9 @@
+## [4.2.2](https://github.com/baruchiro/use-route-as-state/compare/v4.2.1...v4.2.2) (2021-07-26)
+
+
+### Fix
+
+* auto-generated CHANGELOG (#106) ([9e3e4b5](https://github.com/baruchiro/use-route-as-state/commit/9e3e4b5c98bbdb0669ccb8db1ac6e9fa63476ddd)), closes [#106](https://github.com/baruchiro/use-route-as-state/issues/106)
 
 # Change Log
 
