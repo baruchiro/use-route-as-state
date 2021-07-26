@@ -1,3 +1,7 @@
+const conventionalCommits = {
+    preset: 'eslint'
+}
+
 module.exports = {
     release: {
         branches: ["master"]
@@ -5,11 +9,14 @@ module.exports = {
     plugins: [
         [
             '@semantic-release/commit-analyzer',
-            {
-                preset: 'eslint'
-            }
+            conventionalCommits
         ],
-        '@semantic-release/release-notes-generator', '@semantic-release/npm', '@semantic-release/github',
+        [
+            '@semantic-release/release-notes-generator',
+            conventionalCommits
+        ],
+        '@semantic-release/npm',
+        '@semantic-release/github',
         [
             "@semantic-release/changelog",
             {
