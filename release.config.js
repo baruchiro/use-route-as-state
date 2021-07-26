@@ -15,14 +15,21 @@ module.exports = {
             '@semantic-release/release-notes-generator',
             conventionalCommits
         ],
-        '@semantic-release/npm',
-        '@semantic-release/github',
         [
             "@semantic-release/changelog",
             {
                 "changelogFile": "CHANGELOG.md"
             }
         ],
+        [
+            "@semantic-release/git",
+            {
+                "assets": ["CHANGELOG.md"],
+                "message": "${nextRelease.version} CHANGELOG [skip ci]\n\n${nextRelease.notes}"
+            }
+        ],
+        '@semantic-release/npm',
+        '@semantic-release/github',
         [
             "@semantic-release/exec",
             {
