@@ -1,3 +1,10 @@
+## [4.2.3](https://github.com/baruchiro/use-route-as-state/compare/v4.2.2...v4.2.3) (2021-09-09)
+
+
+### Fix
+
+* Dependabot upgrades (#125) ([48c2426](https://github.com/baruchiro/use-route-as-state/commit/48c2426006554fac8be6a872fe11c5610d33f1f2)), closes [#125](https://github.com/baruchiro/use-route-as-state/issues/125)
+
 ## [4.2.2](https://github.com/baruchiro/use-route-as-state/compare/v4.2.1...v4.2.2) (2021-07-26)
 
 
