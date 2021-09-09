@@ -12,13 +12,6 @@
 
 * auto-generated CHANGELOG (#106) ([9e3e4b5](https://github.com/baruchiro/use-route-as-state/commit/9e3e4b5c98bbdb0669ccb8db1ac6e9fa63476ddd)), closes [#106](https://github.com/baruchiro/use-route-as-state/issues/106)
 
-# Change Log
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
-
 ## [4.1.0] - 2021-05-28
 
 Add `useUrlState` to change both *Route Params* and *Query String*.
