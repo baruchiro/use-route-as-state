@@ -18,14 +18,40 @@ export const useDecodedRouteMatch = () => {
     return { params: decodedParams, ...rest }
 }
 
-export const decodeValues = (obj: Record<string, string>) => Object.keys(obj)
-    .reduce((acc, key) => ({
-        ...acc,
-        [key]: obj[key] && decodeURIComponent(obj[key])
-    }), {} as Record<string, string>)
+export const decodeValues = (obj: Record<string, string>) => {
+    const data = Object.keys(obj).reduce((acc, key) => {
+        acc[key] = obj[key] && decodeURIComponent(obj[key] as string)
+        return acc
 
-export const encodeValues = (obj: Record<string, string>) => Object.keys(removeUndefined(obj))
-    .reduce((acc, key) => ({
-        ...acc,
-        [key]: obj[key] && encodeURIComponent(obj[key])
-    }), {} as Record<string, string>)
+    }, {} as Record<string, string>)
+
+    return data
+}
+
+export const encodeValues = (obj: Record<string, string|string[]>) => {
+    const data = Object.keys(removeUndefined(obj)).reduce((acc, key) => {
+
+        if (Array.isArray(obj[key])) {
+            acc[key] = (obj[key] as string[]).map((value:string) => {
+                return encodeURIComponent(value)
+            })
+        } else {
+            acc[key] = obj[key] && encodeURIComponent(obj[key] as string)
+        }
+
+        return acc
+
+    }, {} as Record<string, string|string[]>)
+
+    return data
+}
+
+export const encodeParamsValues = (obj: Record<string, string>) => {
+    const data = Object.keys(removeUndefined(obj)).reduce((acc, key) => {
+        acc[key] = obj[key] && encodeURIComponent(obj[key] as string)
+        return acc
+
+    }, {} as Record<string, string>)
+
+    return data
+}

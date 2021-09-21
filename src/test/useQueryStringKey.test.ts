@@ -75,7 +75,7 @@ describe('useQueryStringKey', () => {
     })
 
     act(() => {
-      state.set((prev) => prev + prev)
+      state.set((prev) => typeof prev === 'string' ? prev + prev : [...prev,  ...prev])
     })
 
     expect(state.get).toBe('barbar')
