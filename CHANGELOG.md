@@ -1,16 +1,25 @@
+# Changelog
+
+## [4.2.4](https://github.com/baruchiro/use-route-as-state/compare/v4.2.3...v4.2.4) (2021-09-26)
+
+
+### Fix
+
+* Dependabot upgrades ([6c0cb56](https://github.com/baruchiro/use-route-as-state/commit/6c0cb56cda204f40891a88f4e7033cc0451e02d3))
+
+## [4.2.3](https://github.com/baruchiro/use-route-as-state/compare/v4.2.2...v4.2.3) (2021-09-09)
+
+
+### Fix
+
+* Dependabot upgrades (#125) ([48c2426](https://github.com/baruchiro/use-route-as-state/commit/48c2426006554fac8be6a872fe11c5610d33f1f2)), closes [#125](https://github.com/baruchiro/use-route-as-state/issues/125)
+
 ## [4.2.2](https://github.com/baruchiro/use-route-as-state/compare/v4.2.1...v4.2.2) (2021-07-26)
 
 
 ### Fix
 
 * auto-generated CHANGELOG (#106) ([9e3e4b5](https://github.com/baruchiro/use-route-as-state/commit/9e3e4b5c98bbdb0669ccb8db1ac6e9fa63476ddd)), closes [#106](https://github.com/baruchiro/use-route-as-state/issues/106)
-
-# Change Log
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [4.1.0] - 2021-05-28
 
