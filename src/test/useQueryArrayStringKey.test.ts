@@ -5,23 +5,16 @@ import renderer from "./renderer";
 describe('useArrayQueryStringKey', () => {
 
   it('Should be undefined by default', () => {
+    const { state, history } = renderer(() => useQueryStringKey('foo'))
+
+    expect(state.get).toBe(undefined)
+    expect(history.location.search).toBe('')
+  })
+
+  it('Should show an empty array', () => {
     const { state, history } = renderer(() => useQueryStringKey('foo', []))
 
     expect(state.get).toEqual([])
-    expect(history.location.search).toBe('')
-  })
-
-  it('Should be the default input', () => {
-    const { state, history } = renderer(() => useQueryStringKey('foo', ['bar']))
-
-    expect(state.get).toEqual(['bar'])
-    expect(history.location.search).toBe('')
-  })
-
-  it('Should be the default multiple input', () => {
-    const { state, history } = renderer(() => useQueryStringKey('foo', ['bar','bar2','bar3']))
-
-    expect(state.get).toEqual(['bar', 'bar2', 'bar3'])
     expect(history.location.search).toBe('')
   })
 
@@ -36,25 +29,25 @@ describe('useArrayQueryStringKey', () => {
     expect(history.location.search).toBe('?foo[]=bar')
   })
 
-  it('Should show empty array', () => {
-    const { state, history } = renderer(() => useQueryStringKey('foo'))
+  it('Should update the state to an empty array', () => {
+    const { state, history } = renderer(() => useQueryStringKey('foo', ['bar']))
 
     act(() => {
-      state.set([''])
+      state.set([])
     })
 
     expect(state.get).toEqual([])
-    expect(history.location.search).toBe('?foo[]=')
+    expect(history.location.search).toBe('?foo[-]=')
   })
 
-  it('Should show empty array and not default', () => {
+  it('Should update the state to show an array with an empty string', () => {
     const { state, history } = renderer(() => useQueryStringKey('foo', 'bar'))
 
     act(() => {
       state.set([''])
     })
 
-    expect(state.get).toEqual([])
+    expect(state.get).toEqual([''])
     expect(history.location.search).toBe('?foo[]=')
   })
 
@@ -69,8 +62,8 @@ describe('useArrayQueryStringKey', () => {
       state.set([])
     })
 
-    expect(state.get).toEqual(['bar'])
-    expect(history.location.search).toBe('')
+    expect(state.get).toEqual([])
+    expect(history.location.search).toBe('?foo[-]=')
   })
 
   it('Should use the previous state', () => {

@@ -1,16 +1,34 @@
-import { Box, TextField, Typography } from '@material-ui/core'
+import { Box, Chip, Select, OutlinedInput, MenuItem } from '@material-ui/core'
 import React from 'react'
 import { useQueryStringKey } from 'use-route-as-state'
 
 const UseArrayQueryKey = () => {
-    const [fooArray, setFooArray] = useQueryStringKey('data', ['javascript','php'])
+    const [dataArray, setDataArray] = useQueryStringKey('data', ['javascript','php'])
+    const names = ['cobol', 'elixir', 'java', 'javascript', 'php', 'python']
 
-    const onChange = (e) => setFooArray(e.target.value.split(' '))
-
-    return <Box display='flex' flexDirection='column'>
-        <TextField id='foo' value={fooArray && fooArray.join(' ')} label={`Insert values for 'foo' (separed by spaces)`} onChange={onChange} />
-        {fooArray && fooArray.map((value, index) => <Typography variant='body2'>[{index}] {value}</Typography>)}
-    </Box>
+    return (
+        <Box display='flex' flexDirection='column'>
+            <Select
+                multiple
+                value={dataArray}
+                onChange={(e) => setDataArray(e.target.value)}
+                input={<OutlinedInput id='select-multiple-chip' label='Chip' />}
+                renderValue={(selected) => (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    {selected.map((value) => (
+                        <Chip key={value} label={value} />
+                    ))}
+                    </Box>
+                )}
+                MenuProps={{ 
+                    anchorOrigin: { vertical: 'top', horizontal: 'left' },
+                    transformOrigin: { vertical: 'bottom', horizontal: 'left' },
+                    getContentAnchorEl: null,
+                }}>
+            {names.map((name) => <MenuItem key={name} value={name}>{name}</MenuItem>)}
+            </Select>
+        </Box>
+    )
 }
 
 export default UseArrayQueryKey
