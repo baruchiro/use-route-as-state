@@ -28,30 +28,19 @@ export const decodeValues = (obj: Record<string, string>) => {
     return data
 }
 
-export const encodeValues = (obj: Record<string, string|string[]>) => {
-    const data = Object.keys(removeUndefined(obj)).reduce((acc, key) => {
+export const encodeValues = <T extends Record<string, string | string[]>>(obj: T) => {
+    const data = Object.entries(removeUndefined(obj))
+        .reduce((acc, [key, value]) => {
 
-        if (Array.isArray(obj[key])) {
-            acc[key] = (obj[key] as string[]).map((value:string) => {
-                return encodeURIComponent(value)
-            })
-        } else {
-            acc[key] = obj[key] && encodeURIComponent(obj[key] as string)
-        }
+            if (Array.isArray(value)) {
+                acc[key] = value.map(encodeURIComponent)
+            } else {
+                acc[key] = value && encodeURIComponent(value)
+            }
 
-        return acc
+            return acc
 
-    }, {} as Record<string, string|string[]>)
+        }, {} as Record<string, string | string[]>)
 
-    return data
-}
-
-export const encodeParamsValues = (obj: Record<string, string>) => {
-    const data = Object.keys(removeUndefined(obj)).reduce((acc, key) => {
-        acc[key] = obj[key] && encodeURIComponent(obj[key] as string)
-        return acc
-
-    }, {} as Record<string, string>)
-
-    return data
+    return data as T
 }

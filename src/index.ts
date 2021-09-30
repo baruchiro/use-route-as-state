@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useCallback, useMemo } from 'react'
 import { generatePath, useHistory } from 'react-router-dom'
-import { encodeValues, encodeParamsValues, useDecodedLocation, useDecodedRouteMatch } from './encodeDecode'
+import { encodeValues, useDecodedLocation, useDecodedRouteMatch } from './encodeDecode'
 import { objectToQueryParams, removeUndefined } from './helpers'
 export * from './deprecated'
 
@@ -38,7 +38,7 @@ export const useRouteParams = (defaultValues?: ParamsRouteObject): [ParamsRouteO
 
     const updateParams = useCallback((dispatch: SetStateAction<ParamsRouteObject>) => {
         const updatedParams = typeof dispatch === 'function' ? dispatch(params) : dispatch
-        history.push(generatePath(path, encodeParamsValues(updatedParams)))
+        history.push(generatePath(path, encodeValues(updatedParams)))
     }, [path, params, history])
 
     const paramsWithDefault = useMemo(() => Object.assign({}, defaultValues, removeUndefined(params)), [params, defaultValues])
@@ -57,6 +57,7 @@ export const useUrlState = (defaultValues?: UrlState): [UrlState, DispatchState<
 
     const updateUrl = useCallback((dispatch: SetStateAction<UrlState>) => {
         const updatedState = typeof dispatch === 'function' ? dispatch({ params, query: search }) : dispatch
+        const updatedParams = encodeValues(updatedState.params)
         const updatedQuery = objectToQueryParams(encodeValues(updatedState.query))
         history.push(generatePath(path, updatedParams) + updatedQuery)
     }, [history, params, path, search])
