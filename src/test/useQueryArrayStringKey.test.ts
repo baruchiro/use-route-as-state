@@ -11,14 +11,14 @@ describe('useArrayQueryStringKey', () => {
     expect(history.location.search).toBe('')
   })
 
-  it('Should show an empty array', () => {
+  it('Should return a default empty array', () => {
     const { state, history } = renderer(() => useQueryStringKey('foo', []))
 
     expect(state.get).toEqual([])
     expect(history.location.search).toBe('')
   })
 
-  it('Should update the state and the search', () => {
+  it('Should add one array element', () => {
     const { state, history } = renderer(() => useQueryStringKey('foo', []))
 
     act(() => {
@@ -29,7 +29,7 @@ describe('useArrayQueryStringKey', () => {
     expect(history.location.search).toBe('?foo[]=bar')
   })
 
-  it('Should update the state to an empty array', () => {
+  it('Should show an empty array as [-]', () => {
     const { state, history } = renderer(() => useQueryStringKey('foo', ['bar']))
 
     act(() => {
