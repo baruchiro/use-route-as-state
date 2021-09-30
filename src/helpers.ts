@@ -30,11 +30,11 @@ export const removeUndefined = <T extends Record<string, string | string[] | und
         [key]: obj[key] as string
     }), {} as Record<string, string | string[]>)
 
-export const objectToQueryParams = (obj: Record<string, string|string[]>) => '?' + Object.keys(obj)
-    .filter((key) => obj[key] !== undefined)
-    .map((key) => Array.isArray(obj[key])
-        ? obj[key].length > 0
-            ? (obj[key] as string[]).reduce((acc, cur) => acc + `${key}[]=${cur}&`, '').slice(0, -1)
-            : `${key}[-]=`
-        : `${key}=${obj[key]}`)
+const arrayToQueryParams = (key: string, values: string[]) => values.length === 0
+    ? `${key}[-]=`
+    : values.map((value) => `${key}[]=${value}`).join('&')
+
+export const objectToQueryParams = (obj: Record<string, string | string[]>) => '?' + Object.entries(obj)
+    .filter(([_, value]) => value !== undefined)
+    .map(([key, value]) => Array.isArray(value) ? arrayToQueryParams(key, value) : `${key}=${value}`)
     .join('&')
