@@ -52,7 +52,7 @@ const Examples = () => {
       code={UseQueryKeyCode}>
       <UseQueryKey />
     </Example>
-    <Example title='Use Specific Array Query Key'
+    <Example title='Array support in Query String'
       description='Get a reactive reference to specific Query item'
       code={UseArrayQueryKeyCode}>
       <UseArrayQueryKey />
