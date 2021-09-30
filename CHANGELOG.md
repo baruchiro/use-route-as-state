@@ -1,3 +1,12 @@
+# Changelog
+
+## [4.2.4](https://github.com/baruchiro/use-route-as-state/compare/v4.2.3...v4.2.4) (2021-09-26)
+
+
+### Fix
+
+* Dependabot upgrades ([6c0cb56](https://github.com/baruchiro/use-route-as-state/commit/6c0cb56cda204f40891a88f4e7033cc0451e02d3))
+
 ## [4.2.3](https://github.com/baruchiro/use-route-as-state/compare/v4.2.2...v4.2.3) (2021-09-09)
 
 
