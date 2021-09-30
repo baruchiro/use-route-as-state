@@ -1,5 +1,12 @@
 # Changelog
 
+# [5.0.0](https://github.com/baruchiro/use-route-as-state/compare/v4.2.4...v5.0.0) (2021-09-30)
+
+
+### Breaking
+
+* support for array in query params (#130) ([8a71cf7](https://github.com/baruchiro/use-route-as-state/commit/8a71cf71d7689e0adef9d7e588b10e489ea0f07a)), closes [#130](https://github.com/baruchiro/use-route-as-state/issues/130)
+
 ## [4.2.4](https://github.com/baruchiro/use-route-as-state/compare/v4.2.3...v4.2.4) (2021-09-26)
 
 
