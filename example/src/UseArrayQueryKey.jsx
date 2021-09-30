@@ -1,9 +1,9 @@
-import { Box, Chip, Select, OutlinedInput, MenuItem } from '@material-ui/core'
+import { Box, Chip, MenuItem, OutlinedInput, Select } from '@material-ui/core'
 import React from 'react'
 import { useQueryStringKey } from 'use-route-as-state'
 
 const UseArrayQueryKey = () => {
-    const [dataArray, setDataArray] = useQueryStringKey('data', ['javascript','php'])
+    const [dataArray, setDataArray] = useQueryStringKey('data', ['javascript', 'php'])
     const names = ['cobol', 'elixir', 'java', 'javascript', 'php', 'python']
 
     return (
@@ -15,17 +15,17 @@ const UseArrayQueryKey = () => {
                 input={<OutlinedInput id='select-multiple-chip' label='Chip' />}
                 renderValue={(selected) => (
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                    {selected.map((value) => (
-                        <Chip key={value} label={value} />
-                    ))}
+                        {selected.map((value) => (
+                            <Chip key={value} label={value} />
+                        ))}
                     </Box>
                 )}
-                MenuProps={{ 
+                MenuProps={{
                     anchorOrigin: { vertical: 'top', horizontal: 'left' },
                     transformOrigin: { vertical: 'bottom', horizontal: 'left' },
                     getContentAnchorEl: null,
                 }}>
-            {names.map((name) => <MenuItem key={name} value={name}>{name}</MenuItem>)}
+                {names.map((name) => <MenuItem key={name} value={name}>{name}</MenuItem>)}
             </Select>
         </Box>
     )
