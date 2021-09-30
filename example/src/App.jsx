@@ -1,4 +1,5 @@
 import CreateLinkWithStateCode from '!!raw-loader!./CreateLinkWithState'
+import UseArrayQueryKeyCode from '!!raw-loader!./UseArrayQueryKey'
 import UseQueryKeyCode from '!!raw-loader!./UseQueryKey'
 import UseQueryParamCode from '!!raw-loader!./UseQueryParam'
 import UseRouteParamCode from '!!raw-loader!./UseRouteParam'
@@ -7,6 +8,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import CreateLinkWithState from './CreateLinkWithState'
+import UseArrayQueryKey from './UseArrayQueryKey'
 import UseQueryKey from './UseQueryKey'
 import UseQueryParam from './UseQueryParam'
 import UseRouteParam from './UseRouteParam'
@@ -49,6 +51,11 @@ const Examples = () => {
       description='Get a reactive reference to specific Query item'
       code={UseQueryKeyCode}>
       <UseQueryKey />
+    </Example>
+    <Example title='Array support in Query String'
+      description='Get a reactive reference to specific Query item'
+      code={UseArrayQueryKeyCode}>
+      <UseArrayQueryKey />
     </Example>
   </Box>
 }

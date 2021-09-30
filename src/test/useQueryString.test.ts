@@ -41,6 +41,27 @@ describe('useQueryString', () => {
     expect(history.location.search).toBe('?foo=bar&bazz=eggs')
   })
 
+  it('Should have full object and search, include array', () => {
+    const { state, history } = renderer(() => useQueryString())
+
+    act(() => {
+      state.set({
+        foo: 'bar',
+        arr: ['bazz', 'temp'],
+        tee: [],
+        bazz: 'eggs'
+      })
+    })
+
+    expect(state.get).toEqual({
+      foo: 'bar',
+      arr: ['bazz', 'temp'],
+      tee: [],
+      bazz: 'eggs'
+    })
+    expect(history.location.search).toBe('?foo=bar&arr[]=bazz&arr[]=temp&tee[-]=&bazz=eggs')
+  })
+
   it('Should remove field', () => {
     const { state, history } = renderer(() => useQueryString())
 
