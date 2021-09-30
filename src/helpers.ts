@@ -6,11 +6,11 @@ export const getQueryParamsAsObject = (search: string) => {
 
         // default array key
         if (key.endsWith('[]')) {
-            const keyName = key.replace('[]','')
+            const keyName = key.slice(0, -2)
             params[keyName] = keyValues
         // empty array key
         } else if (key.endsWith('[-]')) {
-            const keyName = key.replace('[-]','')
+            const keyName = key.slice(0, -3)
             params[keyName] = []
         // string key
         } else {
