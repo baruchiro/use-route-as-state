@@ -78,6 +78,7 @@
     "typescript": "^4.0.2"
   },
   "resolutions": {
-    "immer": "^9.0.6"
+    "immer": "^9.0.6",
+    "glob-parent": "^5.1.2"
   }
 }

@@ -15,7 +15,8 @@
   },
   "resolutions": {
     "immer": "^9.0.6",
-    "node-notifier": "^8.0.1"
+    "node-notifier": "^8.0.1",
+    "glob-parent": "^5.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
