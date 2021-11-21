@@ -14,8 +14,9 @@
     "use-route-as-state": "link:.."
   },
   "resolutions": {
-    "immer": "^8.0.1",
-    "node-notifier": "^8.0.1"
+    "immer": "^9.0.6",
+    "node-notifier": "^8.0.1",
+    "glob-parent": "^5.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
