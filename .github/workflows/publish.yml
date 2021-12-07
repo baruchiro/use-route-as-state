@@ -19,7 +19,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
       - uses: ethomson/send-tweet-action@ee76e315ba1f8fed3444282c3c8be0fbb369c751
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && env.SEMVER_VERSION != '' }}
         with:
           status: "${{github.repository}} V${{ env.SEMVER_VERSION }} is published!\n\nhttps://www.npmjs.com/package/use-route-as-state\n\n@github #send_tweet_action @npmjs #use_route_as_state @reactjs\n\nAvailable in Github"
           consumer-key: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
