@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.2.1](https://github.com/baruchiro/use-route-as-state/compare/v5.2.0...v5.2.1) (2022-02-28)
+
+
+### Fix
+
+* Can't use with npm 8 and react 17 (#169 #155) ([6e88d30](https://github.com/baruchiro/use-route-as-state/commit/6e88d306b18100baa7b478202c92c8ba1e9d298e)), closes [#169](https://github.com/baruchiro/use-route-as-state/issues/169) [#155](https://github.com/baruchiro/use-route-as-state/issues/155)
+
 # [5.2.0](https://github.com/baruchiro/use-route-as-state/compare/v5.1.1...v5.2.0) (2022-02-28)
 
 
