@@ -65,7 +65,9 @@ const App = () => {
   return (
     <BrowserRouter basename='/use-route-as-state/'>
       <Switch>
-        <Route path='/' component={Examples} />
+        <Route path='/'>
+          <Examples />
+        </Route>
       </Switch>
     </BrowserRouter>
   )
