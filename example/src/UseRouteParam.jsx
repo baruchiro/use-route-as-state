@@ -4,7 +4,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import { useRouteParams } from 'use-route-as-state'
 
 const UseRouteParam = () => {
-    const [params, updateParams] = useRouteParams()
+    const [params, updateParams] = useRouteParams({ rParam: '' })
 
     const onChange = (e) => updateParams(e.target.value && { [e.target.id]: e.target.value })
 
