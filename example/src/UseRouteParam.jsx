@@ -1,6 +1,6 @@
 import { Box, TextField, Typography } from '@material-ui/core'
 import React from 'react'
-import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import { useRouteParams } from 'use-route-as-state'
 
 const UseRouteParam = () => {
@@ -16,9 +16,9 @@ const UseRouteParam = () => {
 }
 
 export default () => {
-    const { path } = useRouteMatch()
+    const { pathname } = useLocation()
 
-    return <Switch>
-        <Route path={`${path}:rParam?`} component={UseRouteParam} />
-    </Switch>
+    return <Routes>
+        <Route path={`${pathname}:rParam?`} element={UseRouteParam} />
+    </Routes>
 }

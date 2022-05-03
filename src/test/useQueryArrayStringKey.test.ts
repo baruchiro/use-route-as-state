@@ -6,7 +6,6 @@ describe('useArrayQueryStringKey', () => {
 
   it('Should be undefined by default', () => {
     const { state, history } = renderer(() => useQueryStringKey('foo'))
-
     expect(state.get).toBe(undefined)
     expect(history.location.search).toBe('')
   })
