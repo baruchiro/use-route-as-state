@@ -5,9 +5,10 @@ import renderer from "./renderer";
 describe('useArrayQueryStringKey', () => {
 
   it('Should be undefined by default', () => {
-    const { state, history } = renderer(() => useQueryStringKey('foo'))
+    const { state, history } = renderer(() => useQueryStringKey('foo'), '/')
 
-    expect(state.get).toBe(undefined)
+    const s = state.get
+    expect(s).toBe(undefined)
     expect(history.location.search).toBe('')
   })
 
@@ -19,9 +20,11 @@ describe('useArrayQueryStringKey', () => {
   })
 
   it('Should add one array element', () => {
-    const { state, history } = renderer(() => useQueryStringKey('foo', []))
+    //useQueryStringKey('foo', [])
+    const { state, history, result } = renderer(() => useQueryStringKey('foo', []))
 
     act(() => {
+      result.current[1](['bar'])
       state.set(['bar'])
     })
 

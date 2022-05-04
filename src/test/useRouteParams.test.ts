@@ -7,7 +7,8 @@ describe('useRouteParams', () => {
   it('Should have default empty', () => {
     const { state, history } = renderer(() => useRouteParams(), '/:foo?/:bar?')
 
-    expect(state.get).toStrictEqual({})
+    const s = state.get
+    expect(s).toStrictEqual({})
     expect(history.location.pathname).toBe('/')
   })
 

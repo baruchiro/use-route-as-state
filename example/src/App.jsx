@@ -5,7 +5,7 @@ import UseQueryParamCode from '!!raw-loader!./UseQueryParam'
 import UseRouteParamCode from '!!raw-loader!./UseRouteParam'
 import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core'
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import CreateLinkWithState from './CreateLinkWithState'
 import UseArrayQueryKey from './UseArrayQueryKey'
@@ -64,11 +64,11 @@ const App = () => {
 
   return (
     <BrowserRouter basename='/use-route-as-state/'>
-      <Switch>
+      <Routes>
         <Route path='/'>
           <Examples />
         </Route>
-      </Switch>
+      </Routes>
     </BrowserRouter>
   )
 }
