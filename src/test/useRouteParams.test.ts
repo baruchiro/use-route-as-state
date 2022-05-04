@@ -5,21 +5,21 @@ import renderer from "./renderer";
 describe('useRouteParams', () => {
 
   it('Should have default empty', () => {
-    const { state, history } = renderer(() => useRouteParams(), '/:foo?/:bar?')
+    const { state, history } = renderer(() => useRouteParams(), '/:foo/:bar')
 
     expect(state.get).toStrictEqual({})
     expect(history.location.pathname).toBe('/')
   })
 
   it('Should be the default input', () => {
-    const { state, history } = renderer(() => useRouteParams({ foo: 'bazz', bar: 'eggs' }), '/:foo?/:bar?')
+    const { state, history } = renderer(() => useRouteParams({ foo: 'bazz', bar: 'eggs' }), '/:foo/:bar')
 
     expect(state.get).toStrictEqual({ foo: 'bazz', bar: 'eggs' })
     expect(history.location.pathname).toBe('/')
   })
 
   it('Should have full object and path', () => {
-    const { state, history } = renderer(() => useRouteParams(), '/:foo?/:bar?')
+    const { state, history } = renderer(() => useRouteParams(), '/:foo/:bar')
 
     act(() => {
       state.set({
@@ -27,6 +27,8 @@ describe('useRouteParams', () => {
         bar: 'eggs'
       })
     })
+
+    console.log(state.get)
 
     expect(state.get).toStrictEqual({
       foo: 'bazz',
@@ -36,7 +38,7 @@ describe('useRouteParams', () => {
   })
 
   it('Should remove latest field', () => {
-    const { state, history } = renderer(() => useRouteParams(), '/:foo?/:bar?')
+    const { state, history } = renderer(() => useRouteParams(), '/:foo/:bar')
 
     act(() => {
       state.set({

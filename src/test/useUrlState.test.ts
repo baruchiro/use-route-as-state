@@ -16,7 +16,7 @@ const fullState = {
 describe('useUrlState', () => {
 
   it('Should have default empty', () => {
-    const { state, history } = renderer(() => useUrlState(), '/:foo?/:bar?')
+    const { state, history } = renderer(() => useUrlState(), '/:foo/:bar')
 
     expect(state.get?.params).toStrictEqual({})
     expect(history.location.pathname).toBe('/')
@@ -26,7 +26,7 @@ describe('useUrlState', () => {
   })
 
   it('Should be the default input', () => {
-    const { state, history } = renderer(() => useUrlState(fullState), '/:foo?/:bar?')
+    const { state, history } = renderer(() => useUrlState(fullState), '/:foo/:bar')
 
     expect(state.get?.params).toStrictEqual(fullState.params)
     expect(history.location.pathname).toBe('/')
@@ -36,7 +36,7 @@ describe('useUrlState', () => {
   })
 
   it('Should have all data', () => {
-    const { state, history } = renderer(() => useUrlState(), '/:foo?/:bar?')
+    const { state, history } = renderer(() => useUrlState(), '/:foo/:bar')
 
     act(() => {
       state.set(fullState)
@@ -51,7 +51,7 @@ describe('useUrlState', () => {
   })
 
   it('Should remove field', () => {
-    const { state, history } = renderer(() => useUrlState(), '/:foo?/:bar?')
+    const { state, history } = renderer(() => useUrlState(), '/:foo/:bar')
 
     act(() => {
       state.set(fullState)
@@ -77,7 +77,7 @@ describe('useUrlState', () => {
   })
 
   it('Should show empty string', () => {
-    const { state, history } = renderer(() => useUrlState(), '/:foo?/:bar?')
+    const { state, history } = renderer(() => useUrlState(), '/:foo/:bar')
 
     act(() =>
       state.set({
