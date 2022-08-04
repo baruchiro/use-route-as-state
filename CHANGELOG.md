@@ -1,5 +1,12 @@
 # Changelog
 
+# [5.4.0](https://github.com/baruchiro/use-route-as-state/compare/v5.3.0...v5.4.0) (2022-08-04)
+
+
+### Update
+
+* Upgrades by dependabot (#185) ([293536d](https://github.com/baruchiro/use-route-as-state/commit/293536d88f90fe4e8e0b693d74979941527a61bb)), closes [#185](https://github.com/baruchiro/use-route-as-state/issues/185)
+
 # [5.3.0](https://github.com/baruchiro/use-route-as-state/compare/v5.2.1...v5.3.0) (2022-07-10)
 
 
