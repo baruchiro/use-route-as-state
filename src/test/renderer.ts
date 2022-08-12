@@ -10,7 +10,8 @@ type HookAction<TState> = (props: unknown) => [TState | undefined, Dispatch<SetS
 const renderer = <TState>(action: HookAction<TState>, path?: string) => {
     const { wrapper, history } = getHistoryWrapper(path)
 
-    const { result } = renderHook(action, { wrapper })
+    const { result, rerender } = renderHook(action, { wrapper })
+    rerender()
 
     return {
         result,

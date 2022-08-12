@@ -1,10 +1,10 @@
 import { Box, TextField, Typography } from '@material-ui/core'
 import React from 'react'
-import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import { Route, Routes, useRouteMatch } from 'react-router-dom'
 import { useRouteParams } from 'use-route-as-state'
 
 const UseRouteParam = () => {
-    const [params, updateParams] = useRouteParams()
+    const [params, updateParams] = useRouteParams({ rParam: '' })
 
     const onChange = (e) => updateParams(e.target.value && { [e.target.id]: e.target.value })
 
@@ -18,7 +18,9 @@ const UseRouteParam = () => {
 export default () => {
     const { path } = useRouteMatch()
 
-    return <Switch>
-        <Route path={`${path}:rParam?`} component={UseRouteParam} />
-    </Switch>
+    return <Routes>
+        <Route path={`${path}:rParam?`}>
+            <UseRouteParam />
+        </Route>
+    </Routes>
 }
