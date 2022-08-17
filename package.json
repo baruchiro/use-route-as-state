@@ -69,7 +69,7 @@
     "history": "^4.0.0",
     "react": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1",
+    "react-scripts": "^5.0.1",
     "react-test-renderer": "^17.0.1",
     "rollup": "^2.26.9",
     "rollup-plugin-peer-deps-external": "^2.2.0",
