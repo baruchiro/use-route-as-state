@@ -1,5 +1,12 @@
 # Changelog
 
+# [5.5.0](https://github.com/baruchiro/use-route-as-state/compare/v5.4.0...v5.5.0) (2022-08-17)
+
+
+### Update
+
+* security upgrade react-scripts (#186) ([a9a5034](https://github.com/baruchiro/use-route-as-state/commit/a9a5034fcd6c79c7390245b9cebb8d595d4735a5)), closes [#186](https://github.com/baruchiro/use-route-as-state/issues/186)
+
 # [5.4.0](https://github.com/baruchiro/use-route-as-state/compare/v5.3.0...v5.4.0) (2022-08-04)
 
 
