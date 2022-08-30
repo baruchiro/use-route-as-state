@@ -78,7 +78,6 @@
     "typescript": "^4.0.2"
   },
   "resolutions": {
-    "immer": "^9.0.6",
-    "glob-parent": "^5.1.2"
+    "nth-check": "^2.1.1"
   }
 }
