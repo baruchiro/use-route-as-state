@@ -10,13 +10,14 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "link:../node_modules/react-router-dom",
     "react-scripts": "^5.0.1",
-    "react-syntax-highlighter": "^13.5.3",
+    "react-syntax-highlighter": "^15.5.0",
     "use-route-as-state": "link:.."
   },
   "resolutions": {
     "immer": "^9.0.6",
     "node-notifier": "^8.0.1",
-    "glob-parent": "^5.1.2"
+    "glob-parent": "^5.1.2",
+    "nth-check": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
