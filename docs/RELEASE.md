@@ -11,7 +11,7 @@ The convention is the [eslint](https://github.com/conventional-changelog/convent
 {tag: 'New', release: 'minor'},
 ```
 
-When you commiting something, you don't have to keep the convention, but let's say in the PR, squash (prefer don't merge) and update the squash message with these examples:
+When you committing something, you don't have to keep the convention, but let's say in the PR, squash (prefer don't merge) and update the squash message with these examples:
 
 ```
 Breaking: I broke something
