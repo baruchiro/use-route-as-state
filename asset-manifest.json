@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/use-route-as-state/static/css/main.31d6cfe0.css",
-    "main.js": "/use-route-as-state/static/js/main.61be9e40.js",
+    "main.js": "/use-route-as-state/static/js/main.c6707efe.js",
     "index.html": "/use-route-as-state/index.html",
-    "main.61be9e40.js.map": "/use-route-as-state/static/js/main.61be9e40.js.map"
+    "main.c6707efe.js.map": "/use-route-as-state/static/js/main.c6707efe.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.61be9e40.js"
+    "static/js/main.c6707efe.js"
   ]
 }
