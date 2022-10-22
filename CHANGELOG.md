@@ -1,5 +1,12 @@
 # Changelog
 
+# [5.7.0](https://github.com/baruchiro/use-route-as-state/compare/v5.6.1...v5.7.0) (2022-10-22)
+
+
+### New
+
+* Add MIT License ([7895170](https://github.com/baruchiro/use-route-as-state/commit/7895170fcedb058e4dc871b229e0cbe05d3da8d8))
+
 ## [5.6.1](https://github.com/baruchiro/use-route-as-state/compare/v5.6.0...v5.6.1) (2022-10-19)
 
 
