@@ -21,11 +21,11 @@ You can see a live demo, including code, [here](https://baruchiro.github.io/use-
 // URL: /:param?query=
 import * as React from 'react'
 
-import { useRouteParams, useQueryParams } from 'use-route-as-state'
+import { useRouteParams, useQueryString } from 'use-route-as-state'
 
 const Example = () => {
   const [{ param }, setRouteParams] = useRouteParams()
-  const [{ query }, setQueryParams] = useQueryParams()
+  const [{ query }, setQueryParams] = useQueryString()
 
   return (
     <div>
@@ -34,7 +34,7 @@ const Example = () => {
         onChange={({ target }) => setRouteParams({ param: target.value })} />
       <input
         value={ query }
-        onChange={({ target }) => setQueryParams({ query: target.value })} />
+        onChange={({ target }) => setQueryString({ query: target.value })} />
     </div>
   )
 }
