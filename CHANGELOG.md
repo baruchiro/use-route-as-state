@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.7.4](https://github.com/baruchiro/use-route-as-state/compare/v5.7.3...v5.7.4) (2023-03-05)
+
+
+### Fix
+
+* incorrect method name in README (#200) ([255e92b](https://github.com/baruchiro/use-route-as-state/commit/255e92bd5554c7f8ce0b64684f2512bea7b60d32)), closes [#200](https://github.com/baruchiro/use-route-as-state/issues/200)
+
 ## [5.7.3](https://github.com/baruchiro/use-route-as-state/compare/v5.7.2...v5.7.3) (2023-01-09)
 
 
