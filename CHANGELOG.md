@@ -1,5 +1,12 @@
 # Changelog
 
+# [6.0.0](https://github.com/baruchiro/use-route-as-state/compare/v5.7.4...v6.0.0) (2023-12-27)
+
+
+### Breaking
+
+* deprecation - React Router v6 support (#203) ([5f24be5](https://github.com/baruchiro/use-route-as-state/commit/5f24be52396d8340af3e1f99a6702137bf1facdf)), closes [#203](https://github.com/baruchiro/use-route-as-state/issues/203)
+
 ## [5.7.4](https://github.com/baruchiro/use-route-as-state/compare/v5.7.3...v5.7.4) (2023-03-05)
 
 
